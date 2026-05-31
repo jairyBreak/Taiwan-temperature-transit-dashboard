@@ -1,44 +1,23 @@
-# Taiwan Transit & Weather Dashboard 🇹🇼🚆
-(台灣交通與氣象動態預測戰情室)
+# 台灣交通與氣象動態預測 (Taiwan Transit Dashboard) 🇹🇼🚆
 
-這是一個以資料科學為基礎的「台灣大眾運輸與氣候關聯」視覺化戰情室。
-我們整合了台北市政府的**捷運分時大數據**、交通部的**台鐵每日運量資料**，以及德國 **Open-Meteo** 的歷史精準氣象數據，並透過現代化的高質感動態介面，為您揭開氣候與人流之間的隱藏密碼！
+這是一個結合「台北捷運」、「台鐵」與「真實氣象」的互動式地圖視覺化專案。
 
-## 🌟 專案亮點 (Key Features)
+## ✨ 專案特色
 
-- **深色科技感戰情室**：採用極致黑與霓虹配色，搭載發光特效與玻璃擬態 (Glassmorphism)，呈現頂級資料科學質感的 UI。
-- **全台 16 大樞紐分析**：收錄西門、台北車站、士林等 16 個重點捷運與火車站的真實數據。
-- **純靜態神速載入**：已將數百 MB 的巨量政府開放資料，透過後端清洗濃縮為數十 KB 的輕量化 JSON。前端採純靜態部署，0.1 秒瞬間載入！
-- **動態地圖展示**：整合 Leaflet 地圖，點擊站點自動飛躍聚焦，並即時渲染該站點的專屬圖表。
+- **16 大重點車站**：收錄西門、台北車站、士林等核心樞紐的真實流量。
+- **純靜態架構**：資料已預先處理為 JSON，載入極快，不需依賴後端伺服器。
+- **動態視覺化**：點擊地圖站點，自動渲染專屬的氣候與人流對比圖表。
 
-## 🛠️ 技術架構 (Tech Stack)
+## 🚀 如何觀看與執行
 
-- **前端 (Frontend)**: 原生 HTML / CSS / Vanilla JavaScript
-- **視覺化庫 (Libraries)**: Chart.js (圖表), Leaflet.js (地圖)
-- **資料處理 (Data Pipeline)**: Python (`server.py`) - *負責向政府 API 請求上百 MB 的 CSV/JSON 並對齊氣象資料，產出最終的靜態 JSON。*
+這是一個純前端 (HTML/CSS/JS) 的專案。您只需要：
+1. 下載此專案資料夾。
+2. 使用任何靜態伺服器（例如 VS Code 的 Live Server 擴充套件，或執行 `python -m http.server 8000`）。
+3. 用瀏覽器打開 `http://localhost:8000` 即可觀看。
 
-## 🚀 如何在本地運行 (Local Development)
+*(本專案已可直接託管於 GitHub Pages 完美運行)*
 
-由於專案已經轉換為純靜態架構，您可以使用任何靜態伺服器來預覽：
-
-```bash
-# 使用 Python 內建的伺服器
-python -m http.server 8000
-
-# 或使用 Node.js 的 live-server
-npx live-server
-```
-然後在瀏覽器開啟 `http://localhost:8000` 即可。
-
-## 📦 如何產生新的月份資料？ (Data Generation)
-
-本專案 `data/` 資料夾中已經包含處理好的展示用靜態檔。如果您希望擴充其他月份（例如 2025 年的數據）：
-1. 確保您的電腦有 Python 環境。
-2. 執行 `python server.py` 啟動資料處理後端。
-3. 執行 `fetch_all.py` 或發送 API 請求以觸發資料下載與運算。
-4. 系統會自動將幾百 MB 的資料運算完畢並存入 `cache/`，再將需要的檔案複製到 `data/` 資料夾中提供靜態展示。
-
-## 📄 資料來源聲明 (Data Sources)
-- [政府資料開放平台 - 台北捷運客運量](https://data.gov.tw/)
-- [交通部台鐵每日各站進出站人數](https://ods.railway.gov.tw/)
-- [Open-Meteo Historical Weather API](https://open-meteo.com/)
+## 📄 資料來源
+- [政府資料開放平台 (捷運客運量)](https://data.gov.tw/)
+- [交通部 (台鐵每日進出站人數)](https://ods.railway.gov.tw/)
+- [Open-Meteo (歷史氣象)](https://open-meteo.com/)
