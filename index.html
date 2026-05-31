@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>氣溫與人流地圖及相關性分析系統 - 開放資料探索</title>
+  
+  <!-- 字型與圖標 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Leaflet.js 地圖庫 -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  
+  <!-- Chart.js 圖表庫 -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <!-- 主樣式表 -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- 頂部導航列 -->
+    <header class="app-header">
+      <div class="brand">
+        <i class="fa-solid fa-chart-line logo-icon"></i>
+        <div class="brand-text">
+          <h1>氣溫與人流地圖 <span class="subtitle">Correlation Dashboard</span></h1>
+          <p>基於台灣政府開放資料之氣候與城市人潮相關性探索</p>
+        </div>
+      </div>
+      <div class="header-status">
+        <div id="mode-badge" class="badge badge-sim">
+          <span class="pulse-dot"></span>
+          <span class="badge-text">模擬展示模式</span>
+        </div>
+        <button id="btn-toggle-settings" class="btn-icon" title="API 金鑰設定">
+          <i class="fa-solid fa-gear"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- API 金鑰浮動設定面板 (Modal-like card) -->
+    <div id="settings-panel" class="settings-panel hidden">
+      <div class="settings-content">
+        <h3><i class="fa-solid fa-key"></i> API 金鑰管理</h3>
+        <p class="description">請輸入您的中央氣象署 (CWA) API 授權碼，即可開啟即時 API 觀測模式。金鑰將安全儲存於您瀏覽器的 LocalStorage 中。</p>
+        <div class="input-group">
+          <label for="cwa-key-input">氣象署 API 授權碼</label>
+          <input type="password" id="cwa-key-input" placeholder="請貼上 CWA-XXXXXX-XXXX..." />
+        </div>
+        <div class="settings-actions">
+          <button id="btn-save-key" class="btn btn-primary">儲存並重新載入</button>
+          <button id="btn-clear-key" class="btn btn-secondary">清除金鑰</button>
+          <button id="btn-close-settings" class="btn btn-text">取消</button>
+        </div>
+        <small class="tip"><i class="fa-solid fa-info-circle"></i> 沒有金鑰？您可以在 <a href="https://opendata.cwa.gov.tw/" target="_blank">中央氣象署開放資料平台</a> 免費註冊申請。</small>
+      </div>
+    </div>
+
+    <!-- 主要內容區 -->
+    <main class="app-main">
+      
+      <!-- 左側/上方控制面板 -->
+      <aside class="control-aside">
+        
+        <!-- 真實歷史資料載入器 -->
+        <section class="card history-card">
+          <h2><i class="fa-solid fa-database"></i> 真實捷運歷史人流</h2>
+          <p class="card-desc">動態自雲端下載各月份捷運 OD 流量統計，並對接 Open-Meteo 氣候歷史資料：</p>
+          
+          <div class="control-group">
+            <label for="mrt-month-select" class="group-label">選擇觀測月份</label>
+            <div class="select-wrapper">
+              <select id="mrt-month-select" class="custom-select">
+                <option value="">載入月份列表中...</option>
+              </select>
+              <i class="fa-solid fa-chevron-down select-icon"></i>
+            </div>
+          </div>
+          
+          <button id="btn-load-real-data" class="btn btn-primary btn-block">
+            <i class="fa-solid fa-cloud-arrow-down"></i> 載入歷史數據
+          </button>
+        </section>
+        
+        <!-- 模擬控制器 -->
+        <section class="card control-card">
+          <h2><i class="fa-solid fa-sliders-h"></i> 氣候模擬控制器</h2>
+          <p class="card-desc">調整環境變數，觀察各景點人流在模型中的即時變化與分佈：</p>
+          
+          <div id="history-mode-toggle" class="control-group hidden">
+            <label class="group-label">歷史數據檢視切換</label>
+            <div class="weather-selector" style="grid-template-columns: 1fr 1fr;">
+              <button class="weather-btn history-toggle-btn active" data-view="model">
+                <i class="fa-solid fa-calculator"></i> 動態模型推算
+              </button>
+              <button class="weather-btn history-toggle-btn" data-view="real">
+                <i class="fa-solid fa-clock-rotate-left"></i> 真實歷史平均
+              </button>
+            </div>
+          </div>
+          
+          <div class="control-group">
+            <div class="slider-header">
+              <span>模擬氣溫 (<span id="temp-val-display">25</span>°C)</span>
+              <span class="temp-category" id="temp-desc">舒適</span>
+            </div>
+            <input type="range" id="temp-slider" min="10" max="40" value="25" step="0.5" class="custom-slider">
+            <div class="slider-labels">
+              <span>10°C (低溫)</span>
+              <span>25°C</span>
+              <span>40°C (炎熱)</span>
+            </div>
+          </div>
+          
+          <div class="control-group">
+            <label class="group-label">天氣狀況模擬</label>
+            <div class="weather-selector">
+              <button class="weather-btn active" data-weather="sunny" title="晴天">
+                <i class="fa-solid fa-sun"></i> 晴朗
+              </button>
+              <button class="weather-btn" data-weather="rainy" title="雨天">
+                <i class="fa-solid fa-cloud-showers-heavy"></i> 降雨
+              </button>
+              <button class="weather-btn" data-weather="cold" title="寒流">
+                <i class="fa-solid fa-snowflake"></i> 寒流
+              </button>
+              <button class="weather-btn" data-weather="typhoon" title="颱風警報">
+                <i class="fa-solid fa-wind"></i> 颱風
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- 景點選擇清單 -->
+        <section class="card spots-card">
+          <h2><i class="fa-solid fa-map-marker-alt"></i> 景點觀測站點</h2>
+          <p class="card-desc">點擊可於右側切換該點的氣象歷史資料與相關性分析：</p>
+          <div id="spots-list" class="spots-list">
+            <!-- 動態生成景點項目 -->
+          </div>
+        </section>
+
+        <!-- 資料自訂與上傳 -->
+        <section class="card upload-card">
+          <h2><i class="fa-solid fa-file-csv"></i> 匯入自定義資料</h2>
+          <p class="card-desc">上傳您的氣溫與人流 CSV 資料以進行分析：</p>
+          
+          <div id="drop-zone" class="drop-zone">
+            <i class="fa-solid fa-cloud-arrow-up upload-icon"></i>
+            <p class="drop-text">拖放 CSV 檔案至此或<span>點擊瀏覽</span></p>
+            <input type="file" id="csv-file-input" accept=".csv" class="hidden">
+          </div>
+          <div class="upload-actions">
+            <button id="btn-download-sample" class="btn btn-secondary btn-sm">
+              <i class="fa-solid fa-download"></i> 下載範例 CSV 格式
+            </button>
+            <button id="btn-reset-upload" class="btn btn-text btn-sm hidden">
+              <i class="fa-solid fa-rotate-left"></i> 回復預設資料
+            </button>
+          </div>
+        </section>
+      </aside>
+
+      <!-- 右側/下方展示與分析區 -->
+      <section class="display-section">
+        
+        <!-- 地圖展示卡 -->
+        <div class="card map-card">
+          <div class="map-header-overlay">
+            <span class="map-title-text"><i class="fa-solid fa-earth-asia"></i> 台北市景點氣溫與人流分佈地圖</span>
+            <span class="map-legend">
+              <span class="legend-item"><span class="legend-color color-indoor"></span>室內商業</span>
+              <span class="legend-item"><span class="legend-color color-outdoor"></span>戶外景區</span>
+            </span>
+          </div>
+          <div id="map" class="map-container"></div>
+        </div>
+
+        <!-- 統計數據看板 -->
+        <div class="stats-grid">
+          <div class="card stat-card" id="stat-correlation">
+            <div class="stat-icon icon-corr"><i class="fa-solid fa-circle-nodes"></i></div>
+            <div class="stat-info">
+              <h3>皮爾森相關係數 (r)</h3>
+              <p class="stat-value" id="val-corr">0.00</p>
+              <span class="stat-trend" id="desc-corr">載入中...</span>
+            </div>
+          </div>
+          <div class="card stat-card" id="stat-rsquared">
+            <div class="stat-icon icon-r2"><i class="fa-solid fa-calculator"></i></div>
+            <div class="stat-info">
+              <h3>決定係數 (R²)</h3>
+              <p class="stat-value" id="val-r2">0.00</p>
+              <span class="stat-trend">解釋力指標</span>
+            </div>
+          </div>
+          <div class="card stat-card" id="stat-regression">
+            <div class="stat-icon icon-reg"><i class="fa-solid fa-signature"></i></div>
+            <div class="stat-info">
+              <h3>估計迴歸方程式</h3>
+              <p class="stat-value font-math" id="val-reg">y = ax + b</p>
+              <span class="stat-trend">人流(y) 與 溫度(x)</span>
+            </div>
+          </div>
+          <div class="card stat-card" id="stat-simulated">
+            <div class="stat-icon icon-flow"><i class="fa-solid fa-users"></i></div>
+            <div class="stat-info">
+              <h3>當前估計人流量</h3>
+              <p class="stat-value" id="val-sim-flow">0</p>
+              <span class="stat-trend">單位：預估參訪人次 / 小時</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 數據洞察卡 -->
+        <div class="card insight-card">
+          <h2><i class="fa-solid fa-lightbulb"></i> 氣溫與人流關聯洞察報告 <span id="active-spot-badge" class="spot-badge-name"></span></h2>
+          <div class="insight-content" id="insight-text">
+            選擇一個景點以查看其氣候特徵與人流流動的詳細分析。
+          </div>
+        </div>
+
+        <!-- 圖表分析面板 -->
+        <div class="charts-container">
+          <div class="card chart-card">
+            <h2><i class="fa-solid fa-chart-scatter"></i> 溫度對人流量散佈與趨勢線</h2>
+            <div class="chart-wrapper">
+              <canvas id="scatterChart"></canvas>
+            </div>
+          </div>
+          <div class="card chart-card">
+            <h2><i class="fa-solid fa-chart-area"></i> 時間維度變化特徵 (雙軸分析)</h2>
+            <div class="chart-wrapper">
+              <canvas id="lineChart"></canvas>
+            </div>
+          </div>
+        </div>
+        
+      </section>
+
+    </main>
+    
+    <!-- 頁尾 -->
+    <footer class="app-footer">
+      <p>© 2026 氣溫與人流相關性探索系統. 本網頁資料結合中央氣象署氣候觀測與台北市政府捷運/商圈開放資料。開源分析工具。</p>
+    </footer>
+  </div>
+
+  <!-- 全螢幕載入遮罩 -->
+  <div id="loading-overlay" class="loading-overlay hidden">
+    <div class="loading-spinner"></div>
+    <div id="loading-title" class="loading-text">載入歷史數據中...</div>
+    
+    <div class="progress-container">
+      <div id="loading-progress-bar" class="progress-bar"></div>
+    </div>
+    
+    <div id="loading-status" class="loading-status" style="margin-top: 15px; font-size: 0.9rem; color: rgba(255,255,255,0.8); white-space: pre-line; text-align: center;">
+      正在向伺服器發出請求...
+    </div>
+  </div>
+
+  <!-- 核心 JavaScript -->
+  <script type="module" src="app.js"></script>
+</body>
+</html>
