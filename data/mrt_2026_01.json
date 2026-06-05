@@ -1,0 +1,3970 @@
+[
+  {
+    "spot_name": "台中車站",
+    "latitude": 24.13728,
+    "longitude": 120.68691,
+    "temperature": 16.2,
+    "pedestrian_flow": 29755,
+    "time": "01/01"
+  },
+  {
+    "spot_name": "台北101世貿站",
+    "latitude": 25.032958,
+    "longitude": 121.565456,
+    "temperature": 15.7,
+    "pedestrian_flow": 34065,
+    "time": "01/01"
+  },
+  {
+    "spot_name": "台南車站",
+    "latitude": 22.99719,
+    "longitude": 120.21249,
+    "temperature": 18.9,
+    "pedestrian_flow": 26516,
+    "time": "01/01"
+  },
+  {
+    "spot_name": "台東車站",
+    "latitude": 22.79372,
+    "longitude": 121.1231,
+    "temperature": 18.5,
+    "pedestrian_flow": 5316,
+    "time": "01/01"
+  },
+  {
+    "spot_name": "嘉義車站",
+    "latitude": 23.47902,
+    "longitude": 120.44124,
+    "temperature": 17.4,
+    "pedestrian_flow": 10924,
+    "time": "01/01"
+  },
+  {
+    "spot_name": "基隆車站",
+    "latitude": 25.13191,
+    "longitude": 121.73837,
+    "temperature": 15.7,
+    "pedestrian_flow": 8192,
+    "time": "01/01"
+  },
+  {
+    "spot_name": "士林捷運站",
+    "latitude": 25.093155,
+    "longitude": 121.526279,
+    "temperature": 15.3,
+    "pedestrian_flow": 21050,
+    "time": "01/01"
+  },
+  {
+    "spot_name": "宜蘭車站",
+    "latitude": 24.75462,
+    "longitude": 121.75791,
+    "temperature": 16.1,
+    "pedestrian_flow": 4102,
+    "time": "01/01"
+  },
+  {
+    "spot_name": "屏東車站",
+    "latitude": 22.66905,
+    "longitude": 120.48617,
+    "temperature": 20.6,
+    "pedestrian_flow": 11152,
+    "time": "01/01"
+  },
+  {
+    "spot_name": "彰化車站",
+    "latitude": 24.08177,
+    "longitude": 120.53854,
+    "temperature": 17.6,
+    "pedestrian_flow": 14762,
+    "time": "01/01"
+  },
+  {
+    "spot_name": "新竹車站",
+    "latitude": 24.80157,
+    "longitude": 120.97157,
+    "temperature": 16.2,
+    "pedestrian_flow": 22020,
+    "time": "01/01"
+  },
+  {
+    "spot_name": "桃園車站",
+    "latitude": 24.98942,
+    "longitude": 121.31384,
+    "temperature": 15.1,
+    "pedestrian_flow": 25811,
+    "time": "01/01"
+  },
+  {
+    "spot_name": "淡水捷運站",
+    "latitude": 25.167812,
+    "longitude": 121.444747,
+    "temperature": 15.3,
+    "pedestrian_flow": 27018,
+    "time": "01/01"
+  },
+  {
+    "spot_name": "花蓮車站",
+    "latitude": 23.99264,
+    "longitude": 121.60158,
+    "temperature": 19.1,
+    "pedestrian_flow": 10111,
+    "time": "01/01"
+  },
+  {
+    "spot_name": "西門捷運站",
+    "latitude": 25.042385,
+    "longitude": 121.508319,
+    "temperature": 15.3,
+    "pedestrian_flow": 77522,
+    "time": "01/01"
+  },
+  {
+    "spot_name": "高雄車站",
+    "latitude": 22.63946,
+    "longitude": 120.30292,
+    "temperature": 19.8,
+    "pedestrian_flow": 14726,
+    "time": "01/01"
+  },
+  {
+    "spot_name": "台中車站",
+    "latitude": 24.13728,
+    "longitude": 120.68691,
+    "temperature": 12.1,
+    "pedestrian_flow": 25044,
+    "time": "01/02"
+  },
+  {
+    "spot_name": "台北101世貿站",
+    "latitude": 25.032958,
+    "longitude": 121.565456,
+    "temperature": 11.9,
+    "pedestrian_flow": 38744,
+    "time": "01/02"
+  },
+  {
+    "spot_name": "台南車站",
+    "latitude": 22.99719,
+    "longitude": 120.21249,
+    "temperature": 15.9,
+    "pedestrian_flow": 28378,
+    "time": "01/02"
+  },
+  {
+    "spot_name": "台東車站",
+    "latitude": 22.79372,
+    "longitude": 121.1231,
+    "temperature": 16.3,
+    "pedestrian_flow": 4519,
+    "time": "01/02"
+  },
+  {
+    "spot_name": "嘉義車站",
+    "latitude": 23.47902,
+    "longitude": 120.44124,
+    "temperature": 13.7,
+    "pedestrian_flow": 11252,
+    "time": "01/02"
+  },
+  {
+    "spot_name": "基隆車站",
+    "latitude": 25.13191,
+    "longitude": 121.73837,
+    "temperature": 12.3,
+    "pedestrian_flow": 8566,
+    "time": "01/02"
+  },
+  {
+    "spot_name": "士林捷運站",
+    "latitude": 25.093155,
+    "longitude": 121.526279,
+    "temperature": 11.6,
+    "pedestrian_flow": 31224,
+    "time": "01/02"
+  },
+  {
+    "spot_name": "宜蘭車站",
+    "latitude": 24.75462,
+    "longitude": 121.75791,
+    "temperature": 12.5,
+    "pedestrian_flow": 4308,
+    "time": "01/02"
+  },
+  {
+    "spot_name": "屏東車站",
+    "latitude": 22.66905,
+    "longitude": 120.48617,
+    "temperature": 17.0,
+    "pedestrian_flow": 12326,
+    "time": "01/02"
+  },
+  {
+    "spot_name": "彰化車站",
+    "latitude": 24.08177,
+    "longitude": 120.53854,
+    "temperature": 13.4,
+    "pedestrian_flow": 14876,
+    "time": "01/02"
+  },
+  {
+    "spot_name": "新竹車站",
+    "latitude": 24.80157,
+    "longitude": 120.97157,
+    "temperature": 12.3,
+    "pedestrian_flow": 20930,
+    "time": "01/02"
+  },
+  {
+    "spot_name": "桃園車站",
+    "latitude": 24.98942,
+    "longitude": 121.31384,
+    "temperature": 11.5,
+    "pedestrian_flow": 29300,
+    "time": "01/02"
+  },
+  {
+    "spot_name": "淡水捷運站",
+    "latitude": 25.167812,
+    "longitude": 121.444747,
+    "temperature": 11.6,
+    "pedestrian_flow": 34107,
+    "time": "01/02"
+  },
+  {
+    "spot_name": "花蓮車站",
+    "latitude": 23.99264,
+    "longitude": 121.60158,
+    "temperature": 15.7,
+    "pedestrian_flow": 9199,
+    "time": "01/02"
+  },
+  {
+    "spot_name": "西門捷運站",
+    "latitude": 25.042385,
+    "longitude": 121.508319,
+    "temperature": 11.6,
+    "pedestrian_flow": 77870,
+    "time": "01/02"
+  },
+  {
+    "spot_name": "高雄車站",
+    "latitude": 22.63946,
+    "longitude": 120.30292,
+    "temperature": 16.8,
+    "pedestrian_flow": 16964,
+    "time": "01/02"
+  },
+  {
+    "spot_name": "台中車站",
+    "latitude": 24.13728,
+    "longitude": 120.68691,
+    "temperature": 13.3,
+    "pedestrian_flow": 28343,
+    "time": "01/03"
+  },
+  {
+    "spot_name": "台北101世貿站",
+    "latitude": 25.032958,
+    "longitude": 121.565456,
+    "temperature": 13.4,
+    "pedestrian_flow": 35302,
+    "time": "01/03"
+  },
+  {
+    "spot_name": "台南車站",
+    "latitude": 22.99719,
+    "longitude": 120.21249,
+    "temperature": 15.4,
+    "pedestrian_flow": 23807,
+    "time": "01/03"
+  },
+  {
+    "spot_name": "台東車站",
+    "latitude": 22.79372,
+    "longitude": 121.1231,
+    "temperature": 14.5,
+    "pedestrian_flow": 4051,
+    "time": "01/03"
+  },
+  {
+    "spot_name": "嘉義車站",
+    "latitude": 23.47902,
+    "longitude": 120.44124,
+    "temperature": 15.2,
+    "pedestrian_flow": 9874,
+    "time": "01/03"
+  },
+  {
+    "spot_name": "基隆車站",
+    "latitude": 25.13191,
+    "longitude": 121.73837,
+    "temperature": 14.3,
+    "pedestrian_flow": 9979,
+    "time": "01/03"
+  },
+  {
+    "spot_name": "士林捷運站",
+    "latitude": 25.093155,
+    "longitude": 121.526279,
+    "temperature": 13.1,
+    "pedestrian_flow": 26765,
+    "time": "01/03"
+  },
+  {
+    "spot_name": "宜蘭車站",
+    "latitude": 24.75462,
+    "longitude": 121.75791,
+    "temperature": 13.0,
+    "pedestrian_flow": 4234,
+    "time": "01/03"
+  },
+  {
+    "spot_name": "屏東車站",
+    "latitude": 22.66905,
+    "longitude": 120.48617,
+    "temperature": 16.1,
+    "pedestrian_flow": 10383,
+    "time": "01/03"
+  },
+  {
+    "spot_name": "彰化車站",
+    "latitude": 24.08177,
+    "longitude": 120.53854,
+    "temperature": 14.2,
+    "pedestrian_flow": 12923,
+    "time": "01/03"
+  },
+  {
+    "spot_name": "新竹車站",
+    "latitude": 24.80157,
+    "longitude": 120.97157,
+    "temperature": 13.7,
+    "pedestrian_flow": 20275,
+    "time": "01/03"
+  },
+  {
+    "spot_name": "桃園車站",
+    "latitude": 24.98942,
+    "longitude": 121.31384,
+    "temperature": 12.8,
+    "pedestrian_flow": 25338,
+    "time": "01/03"
+  },
+  {
+    "spot_name": "淡水捷運站",
+    "latitude": 25.167812,
+    "longitude": 121.444747,
+    "temperature": 13.4,
+    "pedestrian_flow": 33733,
+    "time": "01/03"
+  },
+  {
+    "spot_name": "花蓮車站",
+    "latitude": 23.99264,
+    "longitude": 121.60158,
+    "temperature": 14.7,
+    "pedestrian_flow": 7917,
+    "time": "01/03"
+  },
+  {
+    "spot_name": "西門捷運站",
+    "latitude": 25.042385,
+    "longitude": 121.508319,
+    "temperature": 13.1,
+    "pedestrian_flow": 79035,
+    "time": "01/03"
+  },
+  {
+    "spot_name": "高雄車站",
+    "latitude": 22.63946,
+    "longitude": 120.30292,
+    "temperature": 16.5,
+    "pedestrian_flow": 15613,
+    "time": "01/03"
+  },
+  {
+    "spot_name": "台中車站",
+    "latitude": 24.13728,
+    "longitude": 120.68691,
+    "temperature": 15.9,
+    "pedestrian_flow": 31733,
+    "time": "01/04"
+  },
+  {
+    "spot_name": "台北101世貿站",
+    "latitude": 25.032958,
+    "longitude": 121.565456,
+    "temperature": 16.1,
+    "pedestrian_flow": 28160,
+    "time": "01/04"
+  },
+  {
+    "spot_name": "台南車站",
+    "latitude": 22.99719,
+    "longitude": 120.21249,
+    "temperature": 17.3,
+    "pedestrian_flow": 26950,
+    "time": "01/04"
+  },
+  {
+    "spot_name": "台東車站",
+    "latitude": 22.79372,
+    "longitude": 121.1231,
+    "temperature": 16.1,
+    "pedestrian_flow": 5618,
+    "time": "01/04"
+  },
+  {
+    "spot_name": "嘉義車站",
+    "latitude": 23.47902,
+    "longitude": 120.44124,
+    "temperature": 16.6,
+    "pedestrian_flow": 10320,
+    "time": "01/04"
+  },
+  {
+    "spot_name": "基隆車站",
+    "latitude": 25.13191,
+    "longitude": 121.73837,
+    "temperature": 16.2,
+    "pedestrian_flow": 9862,
+    "time": "01/04"
+  },
+  {
+    "spot_name": "士林捷運站",
+    "latitude": 25.093155,
+    "longitude": 121.526279,
+    "temperature": 15.7,
+    "pedestrian_flow": 23668,
+    "time": "01/04"
+  },
+  {
+    "spot_name": "宜蘭車站",
+    "latitude": 24.75462,
+    "longitude": 121.75791,
+    "temperature": 14.7,
+    "pedestrian_flow": 4191,
+    "time": "01/04"
+  },
+  {
+    "spot_name": "屏東車站",
+    "latitude": 22.66905,
+    "longitude": 120.48617,
+    "temperature": 18.2,
+    "pedestrian_flow": 10904,
+    "time": "01/04"
+  },
+  {
+    "spot_name": "彰化車站",
+    "latitude": 24.08177,
+    "longitude": 120.53854,
+    "temperature": 16.0,
+    "pedestrian_flow": 13581,
+    "time": "01/04"
+  },
+  {
+    "spot_name": "新竹車站",
+    "latitude": 24.80157,
+    "longitude": 120.97157,
+    "temperature": 14.6,
+    "pedestrian_flow": 23062,
+    "time": "01/04"
+  },
+  {
+    "spot_name": "桃園車站",
+    "latitude": 24.98942,
+    "longitude": 121.31384,
+    "temperature": 14.7,
+    "pedestrian_flow": 25418,
+    "time": "01/04"
+  },
+  {
+    "spot_name": "淡水捷運站",
+    "latitude": 25.167812,
+    "longitude": 121.444747,
+    "temperature": 16.1,
+    "pedestrian_flow": 35074,
+    "time": "01/04"
+  },
+  {
+    "spot_name": "花蓮車站",
+    "latitude": 23.99264,
+    "longitude": 121.60158,
+    "temperature": 16.3,
+    "pedestrian_flow": 11114,
+    "time": "01/04"
+  },
+  {
+    "spot_name": "西門捷運站",
+    "latitude": 25.042385,
+    "longitude": 121.508319,
+    "temperature": 15.7,
+    "pedestrian_flow": 64916,
+    "time": "01/04"
+  },
+  {
+    "spot_name": "高雄車站",
+    "latitude": 22.63946,
+    "longitude": 120.30292,
+    "temperature": 19.0,
+    "pedestrian_flow": 15978,
+    "time": "01/04"
+  },
+  {
+    "spot_name": "台中車站",
+    "latitude": 24.13728,
+    "longitude": 120.68691,
+    "temperature": 15.6,
+    "pedestrian_flow": 18149,
+    "time": "01/05"
+  },
+  {
+    "spot_name": "台北101世貿站",
+    "latitude": 25.032958,
+    "longitude": 121.565456,
+    "temperature": 14.9,
+    "pedestrian_flow": 31958,
+    "time": "01/05"
+  },
+  {
+    "spot_name": "台南車站",
+    "latitude": 22.99719,
+    "longitude": 120.21249,
+    "temperature": 17.6,
+    "pedestrian_flow": 22677,
+    "time": "01/05"
+  },
+  {
+    "spot_name": "台東車站",
+    "latitude": 22.79372,
+    "longitude": 121.1231,
+    "temperature": 17.5,
+    "pedestrian_flow": 3847,
+    "time": "01/05"
+  },
+  {
+    "spot_name": "嘉義車站",
+    "latitude": 23.47902,
+    "longitude": 120.44124,
+    "temperature": 16.4,
+    "pedestrian_flow": 8248,
+    "time": "01/05"
+  },
+  {
+    "spot_name": "基隆車站",
+    "latitude": 25.13191,
+    "longitude": 121.73837,
+    "temperature": 15.3,
+    "pedestrian_flow": 8858,
+    "time": "01/05"
+  },
+  {
+    "spot_name": "士林捷運站",
+    "latitude": 25.093155,
+    "longitude": 121.526279,
+    "temperature": 14.5,
+    "pedestrian_flow": 25639,
+    "time": "01/05"
+  },
+  {
+    "spot_name": "宜蘭車站",
+    "latitude": 24.75462,
+    "longitude": 121.75791,
+    "temperature": 16.0,
+    "pedestrian_flow": 3480,
+    "time": "01/05"
+  },
+  {
+    "spot_name": "屏東車站",
+    "latitude": 22.66905,
+    "longitude": 120.48617,
+    "temperature": 19.6,
+    "pedestrian_flow": 9716,
+    "time": "01/05"
+  },
+  {
+    "spot_name": "彰化車站",
+    "latitude": 24.08177,
+    "longitude": 120.53854,
+    "temperature": 16.0,
+    "pedestrian_flow": 11188,
+    "time": "01/05"
+  },
+  {
+    "spot_name": "新竹車站",
+    "latitude": 24.80157,
+    "longitude": 120.97157,
+    "temperature": 14.9,
+    "pedestrian_flow": 19241,
+    "time": "01/05"
+  },
+  {
+    "spot_name": "桃園車站",
+    "latitude": 24.98942,
+    "longitude": 121.31384,
+    "temperature": 14.3,
+    "pedestrian_flow": 26554,
+    "time": "01/05"
+  },
+  {
+    "spot_name": "淡水捷運站",
+    "latitude": 25.167812,
+    "longitude": 121.444747,
+    "temperature": 14.8,
+    "pedestrian_flow": 31382,
+    "time": "01/05"
+  },
+  {
+    "spot_name": "花蓮車站",
+    "latitude": 23.99264,
+    "longitude": 121.60158,
+    "temperature": 17.7,
+    "pedestrian_flow": 7986,
+    "time": "01/05"
+  },
+  {
+    "spot_name": "西門捷運站",
+    "latitude": 25.042385,
+    "longitude": 121.508319,
+    "temperature": 14.5,
+    "pedestrian_flow": 63091,
+    "time": "01/05"
+  },
+  {
+    "spot_name": "高雄車站",
+    "latitude": 22.63946,
+    "longitude": 120.30292,
+    "temperature": 19.1,
+    "pedestrian_flow": 13112,
+    "time": "01/05"
+  },
+  {
+    "spot_name": "台中車站",
+    "latitude": 24.13728,
+    "longitude": 120.68691,
+    "temperature": 13.2,
+    "pedestrian_flow": 16431,
+    "time": "01/06"
+  },
+  {
+    "spot_name": "台北101世貿站",
+    "latitude": 25.032958,
+    "longitude": 121.565456,
+    "temperature": 13.4,
+    "pedestrian_flow": 32092,
+    "time": "01/06"
+  },
+  {
+    "spot_name": "台南車站",
+    "latitude": 22.99719,
+    "longitude": 120.21249,
+    "temperature": 15.8,
+    "pedestrian_flow": 20656,
+    "time": "01/06"
+  },
+  {
+    "spot_name": "台東車站",
+    "latitude": 22.79372,
+    "longitude": 121.1231,
+    "temperature": 15.9,
+    "pedestrian_flow": 3201,
+    "time": "01/06"
+  },
+  {
+    "spot_name": "嘉義車站",
+    "latitude": 23.47902,
+    "longitude": 120.44124,
+    "temperature": 14.7,
+    "pedestrian_flow": 7817,
+    "time": "01/06"
+  },
+  {
+    "spot_name": "基隆車站",
+    "latitude": 25.13191,
+    "longitude": 121.73837,
+    "temperature": 13.5,
+    "pedestrian_flow": 7953,
+    "time": "01/06"
+  },
+  {
+    "spot_name": "士林捷運站",
+    "latitude": 25.093155,
+    "longitude": 121.526279,
+    "temperature": 13.1,
+    "pedestrian_flow": 27220,
+    "time": "01/06"
+  },
+  {
+    "spot_name": "宜蘭車站",
+    "latitude": 24.75462,
+    "longitude": 121.75791,
+    "temperature": 14.1,
+    "pedestrian_flow": 3448,
+    "time": "01/06"
+  },
+  {
+    "spot_name": "屏東車站",
+    "latitude": 22.66905,
+    "longitude": 120.48617,
+    "temperature": 17.0,
+    "pedestrian_flow": 9330,
+    "time": "01/06"
+  },
+  {
+    "spot_name": "彰化車站",
+    "latitude": 24.08177,
+    "longitude": 120.53854,
+    "temperature": 14.4,
+    "pedestrian_flow": 10633,
+    "time": "01/06"
+  },
+  {
+    "spot_name": "新竹車站",
+    "latitude": 24.80157,
+    "longitude": 120.97157,
+    "temperature": 13.6,
+    "pedestrian_flow": 17033,
+    "time": "01/06"
+  },
+  {
+    "spot_name": "桃園車站",
+    "latitude": 24.98942,
+    "longitude": 121.31384,
+    "temperature": 12.7,
+    "pedestrian_flow": 25720,
+    "time": "01/06"
+  },
+  {
+    "spot_name": "淡水捷運站",
+    "latitude": 25.167812,
+    "longitude": 121.444747,
+    "temperature": 13.0,
+    "pedestrian_flow": 30390,
+    "time": "01/06"
+  },
+  {
+    "spot_name": "花蓮車站",
+    "latitude": 23.99264,
+    "longitude": 121.60158,
+    "temperature": 15.8,
+    "pedestrian_flow": 6570,
+    "time": "01/06"
+  },
+  {
+    "spot_name": "西門捷運站",
+    "latitude": 25.042385,
+    "longitude": 121.508319,
+    "temperature": 13.1,
+    "pedestrian_flow": 63440,
+    "time": "01/06"
+  },
+  {
+    "spot_name": "高雄車站",
+    "latitude": 22.63946,
+    "longitude": 120.30292,
+    "temperature": 16.6,
+    "pedestrian_flow": 12738,
+    "time": "01/06"
+  },
+  {
+    "spot_name": "台中車站",
+    "latitude": 24.13728,
+    "longitude": 120.68691,
+    "temperature": 12.3,
+    "pedestrian_flow": 16420,
+    "time": "01/07"
+  },
+  {
+    "spot_name": "台北101世貿站",
+    "latitude": 25.032958,
+    "longitude": 121.565456,
+    "temperature": 12.4,
+    "pedestrian_flow": 34193,
+    "time": "01/07"
+  },
+  {
+    "spot_name": "台南車站",
+    "latitude": 22.99719,
+    "longitude": 120.21249,
+    "temperature": 14.8,
+    "pedestrian_flow": 20211,
+    "time": "01/07"
+  },
+  {
+    "spot_name": "台東車站",
+    "latitude": 22.79372,
+    "longitude": 121.1231,
+    "temperature": 14.6,
+    "pedestrian_flow": 3080,
+    "time": "01/07"
+  },
+  {
+    "spot_name": "嘉義車站",
+    "latitude": 23.47902,
+    "longitude": 120.44124,
+    "temperature": 13.3,
+    "pedestrian_flow": 7474,
+    "time": "01/07"
+  },
+  {
+    "spot_name": "基隆車站",
+    "latitude": 25.13191,
+    "longitude": 121.73837,
+    "temperature": 12.9,
+    "pedestrian_flow": 8799,
+    "time": "01/07"
+  },
+  {
+    "spot_name": "士林捷運站",
+    "latitude": 25.093155,
+    "longitude": 121.526279,
+    "temperature": 12.1,
+    "pedestrian_flow": 27511,
+    "time": "01/07"
+  },
+  {
+    "spot_name": "宜蘭車站",
+    "latitude": 24.75462,
+    "longitude": 121.75791,
+    "temperature": 12.2,
+    "pedestrian_flow": 3202,
+    "time": "01/07"
+  },
+  {
+    "spot_name": "屏東車站",
+    "latitude": 22.66905,
+    "longitude": 120.48617,
+    "temperature": 14.5,
+    "pedestrian_flow": 9456,
+    "time": "01/07"
+  },
+  {
+    "spot_name": "彰化車站",
+    "latitude": 24.08177,
+    "longitude": 120.53854,
+    "temperature": 13.2,
+    "pedestrian_flow": 10428,
+    "time": "01/07"
+  },
+  {
+    "spot_name": "新竹車站",
+    "latitude": 24.80157,
+    "longitude": 120.97157,
+    "temperature": 12.7,
+    "pedestrian_flow": 17330,
+    "time": "01/07"
+  },
+  {
+    "spot_name": "桃園車站",
+    "latitude": 24.98942,
+    "longitude": 121.31384,
+    "temperature": 11.8,
+    "pedestrian_flow": 25633,
+    "time": "01/07"
+  },
+  {
+    "spot_name": "淡水捷運站",
+    "latitude": 25.167812,
+    "longitude": 121.444747,
+    "temperature": 12.4,
+    "pedestrian_flow": 31388,
+    "time": "01/07"
+  },
+  {
+    "spot_name": "花蓮車站",
+    "latitude": 23.99264,
+    "longitude": 121.60158,
+    "temperature": 13.5,
+    "pedestrian_flow": 6543,
+    "time": "01/07"
+  },
+  {
+    "spot_name": "西門捷運站",
+    "latitude": 25.042385,
+    "longitude": 121.508319,
+    "temperature": 12.1,
+    "pedestrian_flow": 65356,
+    "time": "01/07"
+  },
+  {
+    "spot_name": "高雄車站",
+    "latitude": 22.63946,
+    "longitude": 120.30292,
+    "temperature": 15.0,
+    "pedestrian_flow": 12521,
+    "time": "01/07"
+  },
+  {
+    "spot_name": "台中車站",
+    "latitude": 24.13728,
+    "longitude": 120.68691,
+    "temperature": 13.1,
+    "pedestrian_flow": 17089,
+    "time": "01/08"
+  },
+  {
+    "spot_name": "台北101世貿站",
+    "latitude": 25.032958,
+    "longitude": 121.565456,
+    "temperature": 12.7,
+    "pedestrian_flow": 32550,
+    "time": "01/08"
+  },
+  {
+    "spot_name": "台南車站",
+    "latitude": 22.99719,
+    "longitude": 120.21249,
+    "temperature": 15.2,
+    "pedestrian_flow": 21400,
+    "time": "01/08"
+  },
+  {
+    "spot_name": "台東車站",
+    "latitude": 22.79372,
+    "longitude": 121.1231,
+    "temperature": 14.1,
+    "pedestrian_flow": 3499,
+    "time": "01/08"
+  },
+  {
+    "spot_name": "嘉義車站",
+    "latitude": 23.47902,
+    "longitude": 120.44124,
+    "temperature": 14.4,
+    "pedestrian_flow": 8072,
+    "time": "01/08"
+  },
+  {
+    "spot_name": "基隆車站",
+    "latitude": 25.13191,
+    "longitude": 121.73837,
+    "temperature": 13.8,
+    "pedestrian_flow": 8254,
+    "time": "01/08"
+  },
+  {
+    "spot_name": "士林捷運站",
+    "latitude": 25.093155,
+    "longitude": 121.526279,
+    "temperature": 12.4,
+    "pedestrian_flow": 27757,
+    "time": "01/08"
+  },
+  {
+    "spot_name": "宜蘭車站",
+    "latitude": 24.75462,
+    "longitude": 121.75791,
+    "temperature": 12.6,
+    "pedestrian_flow": 3282,
+    "time": "01/08"
+  },
+  {
+    "spot_name": "屏東車站",
+    "latitude": 22.66905,
+    "longitude": 120.48617,
+    "temperature": 16.4,
+    "pedestrian_flow": 9547,
+    "time": "01/08"
+  },
+  {
+    "spot_name": "彰化車站",
+    "latitude": 24.08177,
+    "longitude": 120.53854,
+    "temperature": 13.6,
+    "pedestrian_flow": 10773,
+    "time": "01/08"
+  },
+  {
+    "spot_name": "新竹車站",
+    "latitude": 24.80157,
+    "longitude": 120.97157,
+    "temperature": 13.7,
+    "pedestrian_flow": 17882,
+    "time": "01/08"
+  },
+  {
+    "spot_name": "桃園車站",
+    "latitude": 24.98942,
+    "longitude": 121.31384,
+    "temperature": 12.2,
+    "pedestrian_flow": 25613,
+    "time": "01/08"
+  },
+  {
+    "spot_name": "淡水捷運站",
+    "latitude": 25.167812,
+    "longitude": 121.444747,
+    "temperature": 12.6,
+    "pedestrian_flow": 31956,
+    "time": "01/08"
+  },
+  {
+    "spot_name": "花蓮車站",
+    "latitude": 23.99264,
+    "longitude": 121.60158,
+    "temperature": 13.2,
+    "pedestrian_flow": 6963,
+    "time": "01/08"
+  },
+  {
+    "spot_name": "西門捷運站",
+    "latitude": 25.042385,
+    "longitude": 121.508319,
+    "temperature": 12.4,
+    "pedestrian_flow": 64227,
+    "time": "01/08"
+  },
+  {
+    "spot_name": "高雄車站",
+    "latitude": 22.63946,
+    "longitude": 120.30292,
+    "temperature": 16.6,
+    "pedestrian_flow": 12973,
+    "time": "01/08"
+  },
+  {
+    "spot_name": "台中車站",
+    "latitude": 24.13728,
+    "longitude": 120.68691,
+    "temperature": 14.0,
+    "pedestrian_flow": 24724,
+    "time": "01/09"
+  },
+  {
+    "spot_name": "台北101世貿站",
+    "latitude": 25.032958,
+    "longitude": 121.565456,
+    "temperature": 11.9,
+    "pedestrian_flow": 38704,
+    "time": "01/09"
+  },
+  {
+    "spot_name": "台南車站",
+    "latitude": 22.99719,
+    "longitude": 120.21249,
+    "temperature": 15.3,
+    "pedestrian_flow": 28584,
+    "time": "01/09"
+  },
+  {
+    "spot_name": "台東車站",
+    "latitude": 22.79372,
+    "longitude": 121.1231,
+    "temperature": 13.7,
+    "pedestrian_flow": 5201,
+    "time": "01/09"
+  },
+  {
+    "spot_name": "嘉義車站",
+    "latitude": 23.47902,
+    "longitude": 120.44124,
+    "temperature": 15.0,
+    "pedestrian_flow": 11170,
+    "time": "01/09"
+  },
+  {
+    "spot_name": "基隆車站",
+    "latitude": 25.13191,
+    "longitude": 121.73837,
+    "temperature": 13.4,
+    "pedestrian_flow": 10259,
+    "time": "01/09"
+  },
+  {
+    "spot_name": "士林捷運站",
+    "latitude": 25.093155,
+    "longitude": 121.526279,
+    "temperature": 11.5,
+    "pedestrian_flow": 30508,
+    "time": "01/09"
+  },
+  {
+    "spot_name": "宜蘭車站",
+    "latitude": 24.75462,
+    "longitude": 121.75791,
+    "temperature": 11.4,
+    "pedestrian_flow": 4208,
+    "time": "01/09"
+  },
+  {
+    "spot_name": "屏東車站",
+    "latitude": 22.66905,
+    "longitude": 120.48617,
+    "temperature": 17.5,
+    "pedestrian_flow": 12493,
+    "time": "01/09"
+  },
+  {
+    "spot_name": "彰化車站",
+    "latitude": 24.08177,
+    "longitude": 120.53854,
+    "temperature": 14.3,
+    "pedestrian_flow": 15398,
+    "time": "01/09"
+  },
+  {
+    "spot_name": "新竹車站",
+    "latitude": 24.80157,
+    "longitude": 120.97157,
+    "temperature": 13.5,
+    "pedestrian_flow": 21752,
+    "time": "01/09"
+  },
+  {
+    "spot_name": "桃園車站",
+    "latitude": 24.98942,
+    "longitude": 121.31384,
+    "temperature": 11.6,
+    "pedestrian_flow": 30919,
+    "time": "01/09"
+  },
+  {
+    "spot_name": "淡水捷運站",
+    "latitude": 25.167812,
+    "longitude": 121.444747,
+    "temperature": 11.9,
+    "pedestrian_flow": 35904,
+    "time": "01/09"
+  },
+  {
+    "spot_name": "花蓮車站",
+    "latitude": 23.99264,
+    "longitude": 121.60158,
+    "temperature": 12.6,
+    "pedestrian_flow": 10770,
+    "time": "01/09"
+  },
+  {
+    "spot_name": "西門捷運站",
+    "latitude": 25.042385,
+    "longitude": 121.508319,
+    "temperature": 11.5,
+    "pedestrian_flow": 73002,
+    "time": "01/09"
+  },
+  {
+    "spot_name": "高雄車站",
+    "latitude": 22.63946,
+    "longitude": 120.30292,
+    "temperature": 16.9,
+    "pedestrian_flow": 16334,
+    "time": "01/09"
+  },
+  {
+    "spot_name": "台中車站",
+    "latitude": 24.13728,
+    "longitude": 120.68691,
+    "temperature": 15.5,
+    "pedestrian_flow": 33649,
+    "time": "01/10"
+  },
+  {
+    "spot_name": "台北101世貿站",
+    "latitude": 25.032958,
+    "longitude": 121.565456,
+    "temperature": 13.9,
+    "pedestrian_flow": 36298,
+    "time": "01/10"
+  },
+  {
+    "spot_name": "台南車站",
+    "latitude": 22.99719,
+    "longitude": 120.21249,
+    "temperature": 16.9,
+    "pedestrian_flow": 28306,
+    "time": "01/10"
+  },
+  {
+    "spot_name": "台東車站",
+    "latitude": 22.79372,
+    "longitude": 121.1231,
+    "temperature": 16.0,
+    "pedestrian_flow": 4727,
+    "time": "01/10"
+  },
+  {
+    "spot_name": "嘉義車站",
+    "latitude": 23.47902,
+    "longitude": 120.44124,
+    "temperature": 16.4,
+    "pedestrian_flow": 11183,
+    "time": "01/10"
+  },
+  {
+    "spot_name": "基隆車站",
+    "latitude": 25.13191,
+    "longitude": 121.73837,
+    "temperature": 14.7,
+    "pedestrian_flow": 10371,
+    "time": "01/10"
+  },
+  {
+    "spot_name": "士林捷運站",
+    "latitude": 25.093155,
+    "longitude": 121.526279,
+    "temperature": 13.5,
+    "pedestrian_flow": 28026,
+    "time": "01/10"
+  },
+  {
+    "spot_name": "宜蘭車站",
+    "latitude": 24.75462,
+    "longitude": 121.75791,
+    "temperature": 13.9,
+    "pedestrian_flow": 4265,
+    "time": "01/10"
+  },
+  {
+    "spot_name": "屏東車站",
+    "latitude": 22.66905,
+    "longitude": 120.48617,
+    "temperature": 18.3,
+    "pedestrian_flow": 11034,
+    "time": "01/10"
+  },
+  {
+    "spot_name": "彰化車站",
+    "latitude": 24.08177,
+    "longitude": 120.53854,
+    "temperature": 15.7,
+    "pedestrian_flow": 15412,
+    "time": "01/10"
+  },
+  {
+    "spot_name": "新竹車站",
+    "latitude": 24.80157,
+    "longitude": 120.97157,
+    "temperature": 14.5,
+    "pedestrian_flow": 23532,
+    "time": "01/10"
+  },
+  {
+    "spot_name": "桃園車站",
+    "latitude": 24.98942,
+    "longitude": 121.31384,
+    "temperature": 13.4,
+    "pedestrian_flow": 29783,
+    "time": "01/10"
+  },
+  {
+    "spot_name": "淡水捷運站",
+    "latitude": 25.167812,
+    "longitude": 121.444747,
+    "temperature": 14.3,
+    "pedestrian_flow": 34960,
+    "time": "01/10"
+  },
+  {
+    "spot_name": "花蓮車站",
+    "latitude": 23.99264,
+    "longitude": 121.60158,
+    "temperature": 15.0,
+    "pedestrian_flow": 9153,
+    "time": "01/10"
+  },
+  {
+    "spot_name": "西門捷運站",
+    "latitude": 25.042385,
+    "longitude": 121.508319,
+    "temperature": 13.5,
+    "pedestrian_flow": 78583,
+    "time": "01/10"
+  },
+  {
+    "spot_name": "高雄車站",
+    "latitude": 22.63946,
+    "longitude": 120.30292,
+    "temperature": 18.1,
+    "pedestrian_flow": 17851,
+    "time": "01/10"
+  },
+  {
+    "spot_name": "台中車站",
+    "latitude": 24.13728,
+    "longitude": 120.68691,
+    "temperature": 16.5,
+    "pedestrian_flow": 34401,
+    "time": "01/11"
+  },
+  {
+    "spot_name": "台北101世貿站",
+    "latitude": 25.032958,
+    "longitude": 121.565456,
+    "temperature": 14.2,
+    "pedestrian_flow": 31344,
+    "time": "01/11"
+  },
+  {
+    "spot_name": "台南車站",
+    "latitude": 22.99719,
+    "longitude": 120.21249,
+    "temperature": 18.4,
+    "pedestrian_flow": 30832,
+    "time": "01/11"
+  },
+  {
+    "spot_name": "台東車站",
+    "latitude": 22.79372,
+    "longitude": 121.1231,
+    "temperature": 16.4,
+    "pedestrian_flow": 5728,
+    "time": "01/11"
+  },
+  {
+    "spot_name": "嘉義車站",
+    "latitude": 23.47902,
+    "longitude": 120.44124,
+    "temperature": 17.4,
+    "pedestrian_flow": 11120,
+    "time": "01/11"
+  },
+  {
+    "spot_name": "基隆車站",
+    "latitude": 25.13191,
+    "longitude": 121.73837,
+    "temperature": 15.2,
+    "pedestrian_flow": 8882,
+    "time": "01/11"
+  },
+  {
+    "spot_name": "士林捷運站",
+    "latitude": 25.093155,
+    "longitude": 121.526279,
+    "temperature": 13.8,
+    "pedestrian_flow": 23244,
+    "time": "01/11"
+  },
+  {
+    "spot_name": "宜蘭車站",
+    "latitude": 24.75462,
+    "longitude": 121.75791,
+    "temperature": 14.4,
+    "pedestrian_flow": 4083,
+    "time": "01/11"
+  },
+  {
+    "spot_name": "屏東車站",
+    "latitude": 22.66905,
+    "longitude": 120.48617,
+    "temperature": 19.3,
+    "pedestrian_flow": 11081,
+    "time": "01/11"
+  },
+  {
+    "spot_name": "彰化車站",
+    "latitude": 24.08177,
+    "longitude": 120.53854,
+    "temperature": 17.2,
+    "pedestrian_flow": 16436,
+    "time": "01/11"
+  },
+  {
+    "spot_name": "新竹車站",
+    "latitude": 24.80157,
+    "longitude": 120.97157,
+    "temperature": 15.4,
+    "pedestrian_flow": 24456,
+    "time": "01/11"
+  },
+  {
+    "spot_name": "桃園車站",
+    "latitude": 24.98942,
+    "longitude": 121.31384,
+    "temperature": 13.8,
+    "pedestrian_flow": 28715,
+    "time": "01/11"
+  },
+  {
+    "spot_name": "淡水捷運站",
+    "latitude": 25.167812,
+    "longitude": 121.444747,
+    "temperature": 14.1,
+    "pedestrian_flow": 30325,
+    "time": "01/11"
+  },
+  {
+    "spot_name": "花蓮車站",
+    "latitude": 23.99264,
+    "longitude": 121.60158,
+    "temperature": 15.2,
+    "pedestrian_flow": 10239,
+    "time": "01/11"
+  },
+  {
+    "spot_name": "西門捷運站",
+    "latitude": 25.042385,
+    "longitude": 121.508319,
+    "temperature": 13.8,
+    "pedestrian_flow": 69634,
+    "time": "01/11"
+  },
+  {
+    "spot_name": "高雄車站",
+    "latitude": 22.63946,
+    "longitude": 120.30292,
+    "temperature": 19.1,
+    "pedestrian_flow": 17059,
+    "time": "01/11"
+  },
+  {
+    "spot_name": "台中車站",
+    "latitude": 24.13728,
+    "longitude": 120.68691,
+    "temperature": 17.2,
+    "pedestrian_flow": 17972,
+    "time": "01/12"
+  },
+  {
+    "spot_name": "台北101世貿站",
+    "latitude": 25.032958,
+    "longitude": 121.565456,
+    "temperature": 15.0,
+    "pedestrian_flow": 34299,
+    "time": "01/12"
+  },
+  {
+    "spot_name": "台南車站",
+    "latitude": 22.99719,
+    "longitude": 120.21249,
+    "temperature": 18.2,
+    "pedestrian_flow": 22354,
+    "time": "01/12"
+  },
+  {
+    "spot_name": "台東車站",
+    "latitude": 22.79372,
+    "longitude": 121.1231,
+    "temperature": 15.3,
+    "pedestrian_flow": 3996,
+    "time": "01/12"
+  },
+  {
+    "spot_name": "嘉義車站",
+    "latitude": 23.47902,
+    "longitude": 120.44124,
+    "temperature": 18.0,
+    "pedestrian_flow": 8395,
+    "time": "01/12"
+  },
+  {
+    "spot_name": "基隆車站",
+    "latitude": 25.13191,
+    "longitude": 121.73837,
+    "temperature": 16.0,
+    "pedestrian_flow": 8310,
+    "time": "01/12"
+  },
+  {
+    "spot_name": "士林捷運站",
+    "latitude": 25.093155,
+    "longitude": 121.526279,
+    "temperature": 14.7,
+    "pedestrian_flow": 25117,
+    "time": "01/12"
+  },
+  {
+    "spot_name": "宜蘭車站",
+    "latitude": 24.75462,
+    "longitude": 121.75791,
+    "temperature": 14.8,
+    "pedestrian_flow": 3430,
+    "time": "01/12"
+  },
+  {
+    "spot_name": "屏東車站",
+    "latitude": 22.66905,
+    "longitude": 120.48617,
+    "temperature": 19.9,
+    "pedestrian_flow": 9667,
+    "time": "01/12"
+  },
+  {
+    "spot_name": "彰化車站",
+    "latitude": 24.08177,
+    "longitude": 120.53854,
+    "temperature": 16.4,
+    "pedestrian_flow": 11179,
+    "time": "01/12"
+  },
+  {
+    "spot_name": "新竹車站",
+    "latitude": 24.80157,
+    "longitude": 120.97157,
+    "temperature": 14.7,
+    "pedestrian_flow": 18154,
+    "time": "01/12"
+  },
+  {
+    "spot_name": "桃園車站",
+    "latitude": 24.98942,
+    "longitude": 121.31384,
+    "temperature": 14.4,
+    "pedestrian_flow": 26110,
+    "time": "01/12"
+  },
+  {
+    "spot_name": "淡水捷運站",
+    "latitude": 25.167812,
+    "longitude": 121.444747,
+    "temperature": 14.9,
+    "pedestrian_flow": 30204,
+    "time": "01/12"
+  },
+  {
+    "spot_name": "花蓮車站",
+    "latitude": 23.99264,
+    "longitude": 121.60158,
+    "temperature": 14.8,
+    "pedestrian_flow": 7611,
+    "time": "01/12"
+  },
+  {
+    "spot_name": "西門捷運站",
+    "latitude": 25.042385,
+    "longitude": 121.508319,
+    "temperature": 14.7,
+    "pedestrian_flow": 62736,
+    "time": "01/12"
+  },
+  {
+    "spot_name": "高雄車站",
+    "latitude": 22.63946,
+    "longitude": 120.30292,
+    "temperature": 20.0,
+    "pedestrian_flow": 13102,
+    "time": "01/12"
+  },
+  {
+    "spot_name": "台中車站",
+    "latitude": 24.13728,
+    "longitude": 120.68691,
+    "temperature": 18.0,
+    "pedestrian_flow": 16953,
+    "time": "01/13"
+  },
+  {
+    "spot_name": "台北101世貿站",
+    "latitude": 25.032958,
+    "longitude": 121.565456,
+    "temperature": 15.0,
+    "pedestrian_flow": 31256,
+    "time": "01/13"
+  },
+  {
+    "spot_name": "台南車站",
+    "latitude": 22.99719,
+    "longitude": 120.21249,
+    "temperature": 19.4,
+    "pedestrian_flow": 20801,
+    "time": "01/13"
+  },
+  {
+    "spot_name": "台東車站",
+    "latitude": 22.79372,
+    "longitude": 121.1231,
+    "temperature": 16.9,
+    "pedestrian_flow": 3508,
+    "time": "01/13"
+  },
+  {
+    "spot_name": "嘉義車站",
+    "latitude": 23.47902,
+    "longitude": 120.44124,
+    "temperature": 18.8,
+    "pedestrian_flow": 8390,
+    "time": "01/13"
+  },
+  {
+    "spot_name": "基隆車站",
+    "latitude": 25.13191,
+    "longitude": 121.73837,
+    "temperature": 16.0,
+    "pedestrian_flow": 9508,
+    "time": "01/13"
+  },
+  {
+    "spot_name": "士林捷運站",
+    "latitude": 25.093155,
+    "longitude": 121.526279,
+    "temperature": 14.7,
+    "pedestrian_flow": 28362,
+    "time": "01/13"
+  },
+  {
+    "spot_name": "宜蘭車站",
+    "latitude": 24.75462,
+    "longitude": 121.75791,
+    "temperature": 15.8,
+    "pedestrian_flow": 3661,
+    "time": "01/13"
+  },
+  {
+    "spot_name": "屏東車站",
+    "latitude": 22.66905,
+    "longitude": 120.48617,
+    "temperature": 20.4,
+    "pedestrian_flow": 9689,
+    "time": "01/13"
+  },
+  {
+    "spot_name": "彰化車站",
+    "latitude": 24.08177,
+    "longitude": 120.53854,
+    "temperature": 18.4,
+    "pedestrian_flow": 10850,
+    "time": "01/13"
+  },
+  {
+    "spot_name": "新竹車站",
+    "latitude": 24.80157,
+    "longitude": 120.97157,
+    "temperature": 15.9,
+    "pedestrian_flow": 17382,
+    "time": "01/13"
+  },
+  {
+    "spot_name": "桃園車站",
+    "latitude": 24.98942,
+    "longitude": 121.31384,
+    "temperature": 14.5,
+    "pedestrian_flow": 26055,
+    "time": "01/13"
+  },
+  {
+    "spot_name": "淡水捷運站",
+    "latitude": 25.167812,
+    "longitude": 121.444747,
+    "temperature": 14.6,
+    "pedestrian_flow": 32686,
+    "time": "01/13"
+  },
+  {
+    "spot_name": "花蓮車站",
+    "latitude": 23.99264,
+    "longitude": 121.60158,
+    "temperature": 16.9,
+    "pedestrian_flow": 7305,
+    "time": "01/13"
+  },
+  {
+    "spot_name": "西門捷運站",
+    "latitude": 25.042385,
+    "longitude": 121.508319,
+    "temperature": 14.7,
+    "pedestrian_flow": 63919,
+    "time": "01/13"
+  },
+  {
+    "spot_name": "高雄車站",
+    "latitude": 22.63946,
+    "longitude": 120.30292,
+    "temperature": 20.4,
+    "pedestrian_flow": 12969,
+    "time": "01/13"
+  },
+  {
+    "spot_name": "台中車站",
+    "latitude": 24.13728,
+    "longitude": 120.68691,
+    "temperature": 17.2,
+    "pedestrian_flow": 17731,
+    "time": "01/14"
+  },
+  {
+    "spot_name": "台北101世貿站",
+    "latitude": 25.032958,
+    "longitude": 121.565456,
+    "temperature": 17.2,
+    "pedestrian_flow": 31319,
+    "time": "01/14"
+  },
+  {
+    "spot_name": "台南車站",
+    "latitude": 22.99719,
+    "longitude": 120.21249,
+    "temperature": 18.3,
+    "pedestrian_flow": 21195,
+    "time": "01/14"
+  },
+  {
+    "spot_name": "台東車站",
+    "latitude": 22.79372,
+    "longitude": 121.1231,
+    "temperature": 17.9,
+    "pedestrian_flow": 3280,
+    "time": "01/14"
+  },
+  {
+    "spot_name": "嘉義車站",
+    "latitude": 23.47902,
+    "longitude": 120.44124,
+    "temperature": 17.6,
+    "pedestrian_flow": 7964,
+    "time": "01/14"
+  },
+  {
+    "spot_name": "基隆車站",
+    "latitude": 25.13191,
+    "longitude": 121.73837,
+    "temperature": 18.1,
+    "pedestrian_flow": 9214,
+    "time": "01/14"
+  },
+  {
+    "spot_name": "士林捷運站",
+    "latitude": 25.093155,
+    "longitude": 121.526279,
+    "temperature": 16.9,
+    "pedestrian_flow": 28646,
+    "time": "01/14"
+  },
+  {
+    "spot_name": "宜蘭車站",
+    "latitude": 24.75462,
+    "longitude": 121.75791,
+    "temperature": 16.4,
+    "pedestrian_flow": 3481,
+    "time": "01/14"
+  },
+  {
+    "spot_name": "屏東車站",
+    "latitude": 22.66905,
+    "longitude": 120.48617,
+    "temperature": 19.6,
+    "pedestrian_flow": 9563,
+    "time": "01/14"
+  },
+  {
+    "spot_name": "彰化車站",
+    "latitude": 24.08177,
+    "longitude": 120.53854,
+    "temperature": 17.0,
+    "pedestrian_flow": 11198,
+    "time": "01/14"
+  },
+  {
+    "spot_name": "新竹車站",
+    "latitude": 24.80157,
+    "longitude": 120.97157,
+    "temperature": 17.1,
+    "pedestrian_flow": 17683,
+    "time": "01/14"
+  },
+  {
+    "spot_name": "桃園車站",
+    "latitude": 24.98942,
+    "longitude": 121.31384,
+    "temperature": 17.0,
+    "pedestrian_flow": 26154,
+    "time": "01/14"
+  },
+  {
+    "spot_name": "淡水捷運站",
+    "latitude": 25.167812,
+    "longitude": 121.444747,
+    "temperature": 17.4,
+    "pedestrian_flow": 33016,
+    "time": "01/14"
+  },
+  {
+    "spot_name": "花蓮車站",
+    "latitude": 23.99264,
+    "longitude": 121.60158,
+    "temperature": 17.3,
+    "pedestrian_flow": 6833,
+    "time": "01/14"
+  },
+  {
+    "spot_name": "西門捷運站",
+    "latitude": 25.042385,
+    "longitude": 121.508319,
+    "temperature": 16.9,
+    "pedestrian_flow": 64682,
+    "time": "01/14"
+  },
+  {
+    "spot_name": "高雄車站",
+    "latitude": 22.63946,
+    "longitude": 120.30292,
+    "temperature": 20.1,
+    "pedestrian_flow": 13014,
+    "time": "01/14"
+  },
+  {
+    "spot_name": "台中車站",
+    "latitude": 24.13728,
+    "longitude": 120.68691,
+    "temperature": 19.0,
+    "pedestrian_flow": 17974,
+    "time": "01/15"
+  },
+  {
+    "spot_name": "台北101世貿站",
+    "latitude": 25.032958,
+    "longitude": 121.565456,
+    "temperature": 17.9,
+    "pedestrian_flow": 32217,
+    "time": "01/15"
+  },
+  {
+    "spot_name": "台南車站",
+    "latitude": 22.99719,
+    "longitude": 120.21249,
+    "temperature": 20.0,
+    "pedestrian_flow": 21854,
+    "time": "01/15"
+  },
+  {
+    "spot_name": "台東車站",
+    "latitude": 22.79372,
+    "longitude": 121.1231,
+    "temperature": 18.2,
+    "pedestrian_flow": 3699,
+    "time": "01/15"
+  },
+  {
+    "spot_name": "嘉義車站",
+    "latitude": 23.47902,
+    "longitude": 120.44124,
+    "temperature": 18.8,
+    "pedestrian_flow": 8017,
+    "time": "01/15"
+  },
+  {
+    "spot_name": "基隆車站",
+    "latitude": 25.13191,
+    "longitude": 121.73837,
+    "temperature": 18.2,
+    "pedestrian_flow": 9046,
+    "time": "01/15"
+  },
+  {
+    "spot_name": "士林捷運站",
+    "latitude": 25.093155,
+    "longitude": 121.526279,
+    "temperature": 17.5,
+    "pedestrian_flow": 28492,
+    "time": "01/15"
+  },
+  {
+    "spot_name": "宜蘭車站",
+    "latitude": 24.75462,
+    "longitude": 121.75791,
+    "temperature": 17.7,
+    "pedestrian_flow": 3722,
+    "time": "01/15"
+  },
+  {
+    "spot_name": "屏東車站",
+    "latitude": 22.66905,
+    "longitude": 120.48617,
+    "temperature": 21.9,
+    "pedestrian_flow": 9895,
+    "time": "01/15"
+  },
+  {
+    "spot_name": "彰化車站",
+    "latitude": 24.08177,
+    "longitude": 120.53854,
+    "temperature": 18.6,
+    "pedestrian_flow": 11100,
+    "time": "01/15"
+  },
+  {
+    "spot_name": "新竹車站",
+    "latitude": 24.80157,
+    "longitude": 120.97157,
+    "temperature": 17.7,
+    "pedestrian_flow": 18142,
+    "time": "01/15"
+  },
+  {
+    "spot_name": "桃園車站",
+    "latitude": 24.98942,
+    "longitude": 121.31384,
+    "temperature": 17.0,
+    "pedestrian_flow": 26936,
+    "time": "01/15"
+  },
+  {
+    "spot_name": "淡水捷運站",
+    "latitude": 25.167812,
+    "longitude": 121.444747,
+    "temperature": 17.7,
+    "pedestrian_flow": 33967,
+    "time": "01/15"
+  },
+  {
+    "spot_name": "花蓮車站",
+    "latitude": 23.99264,
+    "longitude": 121.60158,
+    "temperature": 18.6,
+    "pedestrian_flow": 7525,
+    "time": "01/15"
+  },
+  {
+    "spot_name": "西門捷運站",
+    "latitude": 25.042385,
+    "longitude": 121.508319,
+    "temperature": 17.5,
+    "pedestrian_flow": 64678,
+    "time": "01/15"
+  },
+  {
+    "spot_name": "高雄車站",
+    "latitude": 22.63946,
+    "longitude": 120.30292,
+    "temperature": 21.8,
+    "pedestrian_flow": 13304,
+    "time": "01/15"
+  },
+  {
+    "spot_name": "台中車站",
+    "latitude": 24.13728,
+    "longitude": 120.68691,
+    "temperature": 20.0,
+    "pedestrian_flow": 25411,
+    "time": "01/16"
+  },
+  {
+    "spot_name": "台北101世貿站",
+    "latitude": 25.032958,
+    "longitude": 121.565456,
+    "temperature": 18.3,
+    "pedestrian_flow": 38025,
+    "time": "01/16"
+  },
+  {
+    "spot_name": "台南車站",
+    "latitude": 22.99719,
+    "longitude": 120.21249,
+    "temperature": 21.2,
+    "pedestrian_flow": 27481,
+    "time": "01/16"
+  },
+  {
+    "spot_name": "台東車站",
+    "latitude": 22.79372,
+    "longitude": 121.1231,
+    "temperature": 18.7,
+    "pedestrian_flow": 5040,
+    "time": "01/16"
+  },
+  {
+    "spot_name": "嘉義車站",
+    "latitude": 23.47902,
+    "longitude": 120.44124,
+    "temperature": 20.4,
+    "pedestrian_flow": 11327,
+    "time": "01/16"
+  },
+  {
+    "spot_name": "基隆車站",
+    "latitude": 25.13191,
+    "longitude": 121.73837,
+    "temperature": 18.3,
+    "pedestrian_flow": 9863,
+    "time": "01/16"
+  },
+  {
+    "spot_name": "士林捷運站",
+    "latitude": 25.093155,
+    "longitude": 121.526279,
+    "temperature": 18.0,
+    "pedestrian_flow": 30961,
+    "time": "01/16"
+  },
+  {
+    "spot_name": "宜蘭車站",
+    "latitude": 24.75462,
+    "longitude": 121.75791,
+    "temperature": 18.0,
+    "pedestrian_flow": 4172,
+    "time": "01/16"
+  },
+  {
+    "spot_name": "屏東車站",
+    "latitude": 22.66905,
+    "longitude": 120.48617,
+    "temperature": 22.7,
+    "pedestrian_flow": 12748,
+    "time": "01/16"
+  },
+  {
+    "spot_name": "彰化車站",
+    "latitude": 24.08177,
+    "longitude": 120.53854,
+    "temperature": 19.9,
+    "pedestrian_flow": 15484,
+    "time": "01/16"
+  },
+  {
+    "spot_name": "新竹車站",
+    "latitude": 24.80157,
+    "longitude": 120.97157,
+    "temperature": 18.5,
+    "pedestrian_flow": 23017,
+    "time": "01/16"
+  },
+  {
+    "spot_name": "桃園車站",
+    "latitude": 24.98942,
+    "longitude": 121.31384,
+    "temperature": 17.7,
+    "pedestrian_flow": 30724,
+    "time": "01/16"
+  },
+  {
+    "spot_name": "淡水捷運站",
+    "latitude": 25.167812,
+    "longitude": 121.444747,
+    "temperature": 18.3,
+    "pedestrian_flow": 34656,
+    "time": "01/16"
+  },
+  {
+    "spot_name": "花蓮車站",
+    "latitude": 23.99264,
+    "longitude": 121.60158,
+    "temperature": 19.3,
+    "pedestrian_flow": 11371,
+    "time": "01/16"
+  },
+  {
+    "spot_name": "西門捷運站",
+    "latitude": 25.042385,
+    "longitude": 121.508319,
+    "temperature": 18.0,
+    "pedestrian_flow": 74570,
+    "time": "01/16"
+  },
+  {
+    "spot_name": "高雄車站",
+    "latitude": 22.63946,
+    "longitude": 120.30292,
+    "temperature": 22.3,
+    "pedestrian_flow": 16594,
+    "time": "01/16"
+  },
+  {
+    "spot_name": "台中車站",
+    "latitude": 24.13728,
+    "longitude": 120.68691,
+    "temperature": 20.8,
+    "pedestrian_flow": 32147,
+    "time": "01/17"
+  },
+  {
+    "spot_name": "台北101世貿站",
+    "latitude": 25.032958,
+    "longitude": 121.565456,
+    "temperature": 18.0,
+    "pedestrian_flow": 34744,
+    "time": "01/17"
+  },
+  {
+    "spot_name": "台南車站",
+    "latitude": 22.99719,
+    "longitude": 120.21249,
+    "temperature": 21.1,
+    "pedestrian_flow": 28809,
+    "time": "01/17"
+  },
+  {
+    "spot_name": "台東車站",
+    "latitude": 22.79372,
+    "longitude": 121.1231,
+    "temperature": 19.1,
+    "pedestrian_flow": 4735,
+    "time": "01/17"
+  },
+  {
+    "spot_name": "嘉義車站",
+    "latitude": 23.47902,
+    "longitude": 120.44124,
+    "temperature": 20.5,
+    "pedestrian_flow": 11573,
+    "time": "01/17"
+  },
+  {
+    "spot_name": "基隆車站",
+    "latitude": 25.13191,
+    "longitude": 121.73837,
+    "temperature": 18.0,
+    "pedestrian_flow": 11416,
+    "time": "01/17"
+  },
+  {
+    "spot_name": "士林捷運站",
+    "latitude": 25.093155,
+    "longitude": 121.526279,
+    "temperature": 17.7,
+    "pedestrian_flow": 30003,
+    "time": "01/17"
+  },
+  {
+    "spot_name": "宜蘭車站",
+    "latitude": 24.75462,
+    "longitude": 121.75791,
+    "temperature": 17.8,
+    "pedestrian_flow": 4801,
+    "time": "01/17"
+  },
+  {
+    "spot_name": "屏東車站",
+    "latitude": 22.66905,
+    "longitude": 120.48617,
+    "temperature": 22.8,
+    "pedestrian_flow": 11434,
+    "time": "01/17"
+  },
+  {
+    "spot_name": "彰化車站",
+    "latitude": 24.08177,
+    "longitude": 120.53854,
+    "temperature": 20.8,
+    "pedestrian_flow": 15329,
+    "time": "01/17"
+  },
+  {
+    "spot_name": "新竹車站",
+    "latitude": 24.80157,
+    "longitude": 120.97157,
+    "temperature": 19.2,
+    "pedestrian_flow": 23204,
+    "time": "01/17"
+  },
+  {
+    "spot_name": "桃園車站",
+    "latitude": 24.98942,
+    "longitude": 121.31384,
+    "temperature": 18.1,
+    "pedestrian_flow": 28859,
+    "time": "01/17"
+  },
+  {
+    "spot_name": "淡水捷運站",
+    "latitude": 25.167812,
+    "longitude": 121.444747,
+    "temperature": 18.1,
+    "pedestrian_flow": 36935,
+    "time": "01/17"
+  },
+  {
+    "spot_name": "花蓮車站",
+    "latitude": 23.99264,
+    "longitude": 121.60158,
+    "temperature": 19.1,
+    "pedestrian_flow": 9315,
+    "time": "01/17"
+  },
+  {
+    "spot_name": "西門捷運站",
+    "latitude": 25.042385,
+    "longitude": 121.508319,
+    "temperature": 17.7,
+    "pedestrian_flow": 78471,
+    "time": "01/17"
+  },
+  {
+    "spot_name": "高雄車站",
+    "latitude": 22.63946,
+    "longitude": 120.30292,
+    "temperature": 21.9,
+    "pedestrian_flow": 18515,
+    "time": "01/17"
+  },
+  {
+    "spot_name": "台中車站",
+    "latitude": 24.13728,
+    "longitude": 120.68691,
+    "temperature": 19.4,
+    "pedestrian_flow": 33741,
+    "time": "01/18"
+  },
+  {
+    "spot_name": "台北101世貿站",
+    "latitude": 25.032958,
+    "longitude": 121.565456,
+    "temperature": 18.1,
+    "pedestrian_flow": 30557,
+    "time": "01/18"
+  },
+  {
+    "spot_name": "台南車站",
+    "latitude": 22.99719,
+    "longitude": 120.21249,
+    "temperature": 20.4,
+    "pedestrian_flow": 28796,
+    "time": "01/18"
+  },
+  {
+    "spot_name": "台東車站",
+    "latitude": 22.79372,
+    "longitude": 121.1231,
+    "temperature": 19.2,
+    "pedestrian_flow": 5780,
+    "time": "01/18"
+  },
+  {
+    "spot_name": "嘉義車站",
+    "latitude": 23.47902,
+    "longitude": 120.44124,
+    "temperature": 19.7,
+    "pedestrian_flow": 11102,
+    "time": "01/18"
+  },
+  {
+    "spot_name": "基隆車站",
+    "latitude": 25.13191,
+    "longitude": 121.73837,
+    "temperature": 18.5,
+    "pedestrian_flow": 8688,
+    "time": "01/18"
+  },
+  {
+    "spot_name": "士林捷運站",
+    "latitude": 25.093155,
+    "longitude": 121.526279,
+    "temperature": 17.7,
+    "pedestrian_flow": 26264,
+    "time": "01/18"
+  },
+  {
+    "spot_name": "宜蘭車站",
+    "latitude": 24.75462,
+    "longitude": 121.75791,
+    "temperature": 17.2,
+    "pedestrian_flow": 4125,
+    "time": "01/18"
+  },
+  {
+    "spot_name": "屏東車站",
+    "latitude": 22.66905,
+    "longitude": 120.48617,
+    "temperature": 22.4,
+    "pedestrian_flow": 11345,
+    "time": "01/18"
+  },
+  {
+    "spot_name": "彰化車站",
+    "latitude": 24.08177,
+    "longitude": 120.53854,
+    "temperature": 19.3,
+    "pedestrian_flow": 16482,
+    "time": "01/18"
+  },
+  {
+    "spot_name": "新竹車站",
+    "latitude": 24.80157,
+    "longitude": 120.97157,
+    "temperature": 18.8,
+    "pedestrian_flow": 25322,
+    "time": "01/18"
+  },
+  {
+    "spot_name": "桃園車站",
+    "latitude": 24.98942,
+    "longitude": 121.31384,
+    "temperature": 18.1,
+    "pedestrian_flow": 28442,
+    "time": "01/18"
+  },
+  {
+    "spot_name": "淡水捷運站",
+    "latitude": 25.167812,
+    "longitude": 121.444747,
+    "temperature": 18.1,
+    "pedestrian_flow": 33382,
+    "time": "01/18"
+  },
+  {
+    "spot_name": "花蓮車站",
+    "latitude": 23.99264,
+    "longitude": 121.60158,
+    "temperature": 19.0,
+    "pedestrian_flow": 10080,
+    "time": "01/18"
+  },
+  {
+    "spot_name": "西門捷運站",
+    "latitude": 25.042385,
+    "longitude": 121.508319,
+    "temperature": 17.7,
+    "pedestrian_flow": 66955,
+    "time": "01/18"
+  },
+  {
+    "spot_name": "高雄車站",
+    "latitude": 22.63946,
+    "longitude": 120.30292,
+    "temperature": 21.7,
+    "pedestrian_flow": 17542,
+    "time": "01/18"
+  },
+  {
+    "spot_name": "台中車站",
+    "latitude": 24.13728,
+    "longitude": 120.68691,
+    "temperature": 18.6,
+    "pedestrian_flow": 18157,
+    "time": "01/19"
+  },
+  {
+    "spot_name": "台北101世貿站",
+    "latitude": 25.032958,
+    "longitude": 121.565456,
+    "temperature": 17.9,
+    "pedestrian_flow": 35858,
+    "time": "01/19"
+  },
+  {
+    "spot_name": "台南車站",
+    "latitude": 22.99719,
+    "longitude": 120.21249,
+    "temperature": 19.7,
+    "pedestrian_flow": 21900,
+    "time": "01/19"
+  },
+  {
+    "spot_name": "台東車站",
+    "latitude": 22.79372,
+    "longitude": 121.1231,
+    "temperature": 19.0,
+    "pedestrian_flow": 4114,
+    "time": "01/19"
+  },
+  {
+    "spot_name": "嘉義車站",
+    "latitude": 23.47902,
+    "longitude": 120.44124,
+    "temperature": 18.8,
+    "pedestrian_flow": 8543,
+    "time": "01/19"
+  },
+  {
+    "spot_name": "基隆車站",
+    "latitude": 25.13191,
+    "longitude": 121.73837,
+    "temperature": 18.1,
+    "pedestrian_flow": 8015,
+    "time": "01/19"
+  },
+  {
+    "spot_name": "士林捷運站",
+    "latitude": 25.093155,
+    "longitude": 121.526279,
+    "temperature": 17.5,
+    "pedestrian_flow": 25731,
+    "time": "01/19"
+  },
+  {
+    "spot_name": "宜蘭車站",
+    "latitude": 24.75462,
+    "longitude": 121.75791,
+    "temperature": 18.6,
+    "pedestrian_flow": 3679,
+    "time": "01/19"
+  },
+  {
+    "spot_name": "屏東車站",
+    "latitude": 22.66905,
+    "longitude": 120.48617,
+    "temperature": 21.6,
+    "pedestrian_flow": 9713,
+    "time": "01/19"
+  },
+  {
+    "spot_name": "彰化車站",
+    "latitude": 24.08177,
+    "longitude": 120.53854,
+    "temperature": 19.2,
+    "pedestrian_flow": 10789,
+    "time": "01/19"
+  },
+  {
+    "spot_name": "新竹車站",
+    "latitude": 24.80157,
+    "longitude": 120.97157,
+    "temperature": 18.3,
+    "pedestrian_flow": 18212,
+    "time": "01/19"
+  },
+  {
+    "spot_name": "桃園車站",
+    "latitude": 24.98942,
+    "longitude": 121.31384,
+    "temperature": 17.5,
+    "pedestrian_flow": 26100,
+    "time": "01/19"
+  },
+  {
+    "spot_name": "淡水捷運站",
+    "latitude": 25.167812,
+    "longitude": 121.444747,
+    "temperature": 17.4,
+    "pedestrian_flow": 30242,
+    "time": "01/19"
+  },
+  {
+    "spot_name": "花蓮車站",
+    "latitude": 23.99264,
+    "longitude": 121.60158,
+    "temperature": 19.8,
+    "pedestrian_flow": 7957,
+    "time": "01/19"
+  },
+  {
+    "spot_name": "西門捷運站",
+    "latitude": 25.042385,
+    "longitude": 121.508319,
+    "temperature": 17.5,
+    "pedestrian_flow": 64290,
+    "time": "01/19"
+  },
+  {
+    "spot_name": "高雄車站",
+    "latitude": 22.63946,
+    "longitude": 120.30292,
+    "temperature": 20.6,
+    "pedestrian_flow": 13387,
+    "time": "01/19"
+  },
+  {
+    "spot_name": "台中車站",
+    "latitude": 24.13728,
+    "longitude": 120.68691,
+    "temperature": 16.8,
+    "pedestrian_flow": 20993,
+    "time": "01/20"
+  },
+  {
+    "spot_name": "台北101世貿站",
+    "latitude": 25.032958,
+    "longitude": 121.565456,
+    "temperature": 14.8,
+    "pedestrian_flow": 33780,
+    "time": "01/20"
+  },
+  {
+    "spot_name": "台南車站",
+    "latitude": 22.99719,
+    "longitude": 120.21249,
+    "temperature": 19.1,
+    "pedestrian_flow": 23449,
+    "time": "01/20"
+  },
+  {
+    "spot_name": "台東車站",
+    "latitude": 22.79372,
+    "longitude": 121.1231,
+    "temperature": 17.3,
+    "pedestrian_flow": 3571,
+    "time": "01/20"
+  },
+  {
+    "spot_name": "嘉義車站",
+    "latitude": 23.47902,
+    "longitude": 120.44124,
+    "temperature": 18.1,
+    "pedestrian_flow": 8642,
+    "time": "01/20"
+  },
+  {
+    "spot_name": "基隆車站",
+    "latitude": 25.13191,
+    "longitude": 121.73837,
+    "temperature": 14.6,
+    "pedestrian_flow": 8091,
+    "time": "01/20"
+  },
+  {
+    "spot_name": "士林捷運站",
+    "latitude": 25.093155,
+    "longitude": 121.526279,
+    "temperature": 14.4,
+    "pedestrian_flow": 27714,
+    "time": "01/20"
+  },
+  {
+    "spot_name": "宜蘭車站",
+    "latitude": 24.75462,
+    "longitude": 121.75791,
+    "temperature": 15.1,
+    "pedestrian_flow": 3774,
+    "time": "01/20"
+  },
+  {
+    "spot_name": "屏東車站",
+    "latitude": 22.66905,
+    "longitude": 120.48617,
+    "temperature": 20.8,
+    "pedestrian_flow": 10398,
+    "time": "01/20"
+  },
+  {
+    "spot_name": "彰化車站",
+    "latitude": 24.08177,
+    "longitude": 120.53854,
+    "temperature": 17.4,
+    "pedestrian_flow": 13330,
+    "time": "01/20"
+  },
+  {
+    "spot_name": "新竹車站",
+    "latitude": 24.80157,
+    "longitude": 120.97157,
+    "temperature": 15.5,
+    "pedestrian_flow": 20351,
+    "time": "01/20"
+  },
+  {
+    "spot_name": "桃園車站",
+    "latitude": 24.98942,
+    "longitude": 121.31384,
+    "temperature": 14.2,
+    "pedestrian_flow": 27398,
+    "time": "01/20"
+  },
+  {
+    "spot_name": "淡水捷運站",
+    "latitude": 25.167812,
+    "longitude": 121.444747,
+    "temperature": 14.3,
+    "pedestrian_flow": 29803,
+    "time": "01/20"
+  },
+  {
+    "spot_name": "花蓮車站",
+    "latitude": 23.99264,
+    "longitude": 121.60158,
+    "temperature": 17.4,
+    "pedestrian_flow": 6659,
+    "time": "01/20"
+  },
+  {
+    "spot_name": "西門捷運站",
+    "latitude": 25.042385,
+    "longitude": 121.508319,
+    "temperature": 14.4,
+    "pedestrian_flow": 73206,
+    "time": "01/20"
+  },
+  {
+    "spot_name": "高雄車站",
+    "latitude": 22.63946,
+    "longitude": 120.30292,
+    "temperature": 19.9,
+    "pedestrian_flow": 13981,
+    "time": "01/20"
+  },
+  {
+    "spot_name": "台中車站",
+    "latitude": 24.13728,
+    "longitude": 120.68691,
+    "temperature": 13.2,
+    "pedestrian_flow": 17888,
+    "time": "01/21"
+  },
+  {
+    "spot_name": "台北101世貿站",
+    "latitude": 25.032958,
+    "longitude": 121.565456,
+    "temperature": 12.2,
+    "pedestrian_flow": 31341,
+    "time": "01/21"
+  },
+  {
+    "spot_name": "台南車站",
+    "latitude": 22.99719,
+    "longitude": 120.21249,
+    "temperature": 16.5,
+    "pedestrian_flow": 20929,
+    "time": "01/21"
+  },
+  {
+    "spot_name": "台東車站",
+    "latitude": 22.79372,
+    "longitude": 121.1231,
+    "temperature": 15.5,
+    "pedestrian_flow": 3526,
+    "time": "01/21"
+  },
+  {
+    "spot_name": "嘉義車站",
+    "latitude": 23.47902,
+    "longitude": 120.44124,
+    "temperature": 15.3,
+    "pedestrian_flow": 8046,
+    "time": "01/21"
+  },
+  {
+    "spot_name": "基隆車站",
+    "latitude": 25.13191,
+    "longitude": 121.73837,
+    "temperature": 12.1,
+    "pedestrian_flow": 8843,
+    "time": "01/21"
+  },
+  {
+    "spot_name": "士林捷運站",
+    "latitude": 25.093155,
+    "longitude": 121.526279,
+    "temperature": 11.8,
+    "pedestrian_flow": 26114,
+    "time": "01/21"
+  },
+  {
+    "spot_name": "宜蘭車站",
+    "latitude": 24.75462,
+    "longitude": 121.75791,
+    "temperature": 12.9,
+    "pedestrian_flow": 3358,
+    "time": "01/21"
+  },
+  {
+    "spot_name": "屏東車站",
+    "latitude": 22.66905,
+    "longitude": 120.48617,
+    "temperature": 18.1,
+    "pedestrian_flow": 9692,
+    "time": "01/21"
+  },
+  {
+    "spot_name": "彰化車站",
+    "latitude": 24.08177,
+    "longitude": 120.53854,
+    "temperature": 14.3,
+    "pedestrian_flow": 11206,
+    "time": "01/21"
+  },
+  {
+    "spot_name": "新竹車站",
+    "latitude": 24.80157,
+    "longitude": 120.97157,
+    "temperature": 12.8,
+    "pedestrian_flow": 17180,
+    "time": "01/21"
+  },
+  {
+    "spot_name": "桃園車站",
+    "latitude": 24.98942,
+    "longitude": 121.31384,
+    "temperature": 11.8,
+    "pedestrian_flow": 24744,
+    "time": "01/21"
+  },
+  {
+    "spot_name": "淡水捷運站",
+    "latitude": 25.167812,
+    "longitude": 121.444747,
+    "temperature": 11.7,
+    "pedestrian_flow": 28044,
+    "time": "01/21"
+  },
+  {
+    "spot_name": "花蓮車站",
+    "latitude": 23.99264,
+    "longitude": 121.60158,
+    "temperature": 15.1,
+    "pedestrian_flow": 7356,
+    "time": "01/21"
+  },
+  {
+    "spot_name": "西門捷運站",
+    "latitude": 25.042385,
+    "longitude": 121.508319,
+    "temperature": 11.8,
+    "pedestrian_flow": 64271,
+    "time": "01/21"
+  },
+  {
+    "spot_name": "高雄車站",
+    "latitude": 22.63946,
+    "longitude": 120.30292,
+    "temperature": 17.3,
+    "pedestrian_flow": 13191,
+    "time": "01/21"
+  },
+  {
+    "spot_name": "台中車站",
+    "latitude": 24.13728,
+    "longitude": 120.68691,
+    "temperature": 13.1,
+    "pedestrian_flow": 17820,
+    "time": "01/22"
+  },
+  {
+    "spot_name": "台北101世貿站",
+    "latitude": 25.032958,
+    "longitude": 121.565456,
+    "temperature": 11.9,
+    "pedestrian_flow": 33043,
+    "time": "01/22"
+  },
+  {
+    "spot_name": "台南車站",
+    "latitude": 22.99719,
+    "longitude": 120.21249,
+    "temperature": 16.0,
+    "pedestrian_flow": 21537,
+    "time": "01/22"
+  },
+  {
+    "spot_name": "台東車站",
+    "latitude": 22.79372,
+    "longitude": 121.1231,
+    "temperature": 15.2,
+    "pedestrian_flow": 3665,
+    "time": "01/22"
+  },
+  {
+    "spot_name": "嘉義車站",
+    "latitude": 23.47902,
+    "longitude": 120.44124,
+    "temperature": 15.2,
+    "pedestrian_flow": 8057,
+    "time": "01/22"
+  },
+  {
+    "spot_name": "基隆車站",
+    "latitude": 25.13191,
+    "longitude": 121.73837,
+    "temperature": 11.9,
+    "pedestrian_flow": 7451,
+    "time": "01/22"
+  },
+  {
+    "spot_name": "士林捷運站",
+    "latitude": 25.093155,
+    "longitude": 121.526279,
+    "temperature": 11.6,
+    "pedestrian_flow": 25821,
+    "time": "01/22"
+  },
+  {
+    "spot_name": "宜蘭車站",
+    "latitude": 24.75462,
+    "longitude": 121.75791,
+    "temperature": 12.3,
+    "pedestrian_flow": 3398,
+    "time": "01/22"
+  },
+  {
+    "spot_name": "屏東車站",
+    "latitude": 22.66905,
+    "longitude": 120.48617,
+    "temperature": 17.3,
+    "pedestrian_flow": 9787,
+    "time": "01/22"
+  },
+  {
+    "spot_name": "彰化車站",
+    "latitude": 24.08177,
+    "longitude": 120.53854,
+    "temperature": 14.2,
+    "pedestrian_flow": 11201,
+    "time": "01/22"
+  },
+  {
+    "spot_name": "新竹車站",
+    "latitude": 24.80157,
+    "longitude": 120.97157,
+    "temperature": 12.5,
+    "pedestrian_flow": 17579,
+    "time": "01/22"
+  },
+  {
+    "spot_name": "桃園車站",
+    "latitude": 24.98942,
+    "longitude": 121.31384,
+    "temperature": 11.5,
+    "pedestrian_flow": 24309,
+    "time": "01/22"
+  },
+  {
+    "spot_name": "淡水捷運站",
+    "latitude": 25.167812,
+    "longitude": 121.444747,
+    "temperature": 11.6,
+    "pedestrian_flow": 28489,
+    "time": "01/22"
+  },
+  {
+    "spot_name": "花蓮車站",
+    "latitude": 23.99264,
+    "longitude": 121.60158,
+    "temperature": 14.4,
+    "pedestrian_flow": 7044,
+    "time": "01/22"
+  },
+  {
+    "spot_name": "西門捷運站",
+    "latitude": 25.042385,
+    "longitude": 121.508319,
+    "temperature": 11.6,
+    "pedestrian_flow": 63495,
+    "time": "01/22"
+  },
+  {
+    "spot_name": "高雄車站",
+    "latitude": 22.63946,
+    "longitude": 120.30292,
+    "temperature": 16.9,
+    "pedestrian_flow": 13314,
+    "time": "01/22"
+  },
+  {
+    "spot_name": "台中車站",
+    "latitude": 24.13728,
+    "longitude": 120.68691,
+    "temperature": 15.9,
+    "pedestrian_flow": 24673,
+    "time": "01/23"
+  },
+  {
+    "spot_name": "台北101世貿站",
+    "latitude": 25.032958,
+    "longitude": 121.565456,
+    "temperature": 14.7,
+    "pedestrian_flow": 40070,
+    "time": "01/23"
+  },
+  {
+    "spot_name": "台南車站",
+    "latitude": 22.99719,
+    "longitude": 120.21249,
+    "temperature": 17.1,
+    "pedestrian_flow": 26728,
+    "time": "01/23"
+  },
+  {
+    "spot_name": "台東車站",
+    "latitude": 22.79372,
+    "longitude": 121.1231,
+    "temperature": 16.4,
+    "pedestrian_flow": 5267,
+    "time": "01/23"
+  },
+  {
+    "spot_name": "嘉義車站",
+    "latitude": 23.47902,
+    "longitude": 120.44124,
+    "temperature": 16.6,
+    "pedestrian_flow": 11493,
+    "time": "01/23"
+  },
+  {
+    "spot_name": "基隆車站",
+    "latitude": 25.13191,
+    "longitude": 121.73837,
+    "temperature": 14.7,
+    "pedestrian_flow": 9382,
+    "time": "01/23"
+  },
+  {
+    "spot_name": "士林捷運站",
+    "latitude": 25.093155,
+    "longitude": 121.526279,
+    "temperature": 14.3,
+    "pedestrian_flow": 30049,
+    "time": "01/23"
+  },
+  {
+    "spot_name": "宜蘭車站",
+    "latitude": 24.75462,
+    "longitude": 121.75791,
+    "temperature": 14.1,
+    "pedestrian_flow": 4431,
+    "time": "01/23"
+  },
+  {
+    "spot_name": "屏東車站",
+    "latitude": 22.66905,
+    "longitude": 120.48617,
+    "temperature": 18.0,
+    "pedestrian_flow": 12579,
+    "time": "01/23"
+  },
+  {
+    "spot_name": "彰化車站",
+    "latitude": 24.08177,
+    "longitude": 120.53854,
+    "temperature": 16.2,
+    "pedestrian_flow": 15052,
+    "time": "01/23"
+  },
+  {
+    "spot_name": "新竹車站",
+    "latitude": 24.80157,
+    "longitude": 120.97157,
+    "temperature": 15.6,
+    "pedestrian_flow": 22308,
+    "time": "01/23"
+  },
+  {
+    "spot_name": "桃園車站",
+    "latitude": 24.98942,
+    "longitude": 121.31384,
+    "temperature": 14.2,
+    "pedestrian_flow": 29788,
+    "time": "01/23"
+  },
+  {
+    "spot_name": "淡水捷運站",
+    "latitude": 25.167812,
+    "longitude": 121.444747,
+    "temperature": 14.5,
+    "pedestrian_flow": 33049,
+    "time": "01/23"
+  },
+  {
+    "spot_name": "花蓮車站",
+    "latitude": 23.99264,
+    "longitude": 121.60158,
+    "temperature": 15.8,
+    "pedestrian_flow": 11091,
+    "time": "01/23"
+  },
+  {
+    "spot_name": "西門捷運站",
+    "latitude": 25.042385,
+    "longitude": 121.508319,
+    "temperature": 14.3,
+    "pedestrian_flow": 73705,
+    "time": "01/23"
+  },
+  {
+    "spot_name": "高雄車站",
+    "latitude": 22.63946,
+    "longitude": 120.30292,
+    "temperature": 17.8,
+    "pedestrian_flow": 17230,
+    "time": "01/23"
+  },
+  {
+    "spot_name": "台中車站",
+    "latitude": 24.13728,
+    "longitude": 120.68691,
+    "temperature": 17.6,
+    "pedestrian_flow": 32226,
+    "time": "01/24"
+  },
+  {
+    "spot_name": "台北101世貿站",
+    "latitude": 25.032958,
+    "longitude": 121.565456,
+    "temperature": 16.2,
+    "pedestrian_flow": 39475,
+    "time": "01/24"
+  },
+  {
+    "spot_name": "台南車站",
+    "latitude": 22.99719,
+    "longitude": 120.21249,
+    "temperature": 18.9,
+    "pedestrian_flow": 28522,
+    "time": "01/24"
+  },
+  {
+    "spot_name": "台東車站",
+    "latitude": 22.79372,
+    "longitude": 121.1231,
+    "temperature": 17.8,
+    "pedestrian_flow": 5705,
+    "time": "01/24"
+  },
+  {
+    "spot_name": "嘉義車站",
+    "latitude": 23.47902,
+    "longitude": 120.44124,
+    "temperature": 18.2,
+    "pedestrian_flow": 12591,
+    "time": "01/24"
+  },
+  {
+    "spot_name": "基隆車站",
+    "latitude": 25.13191,
+    "longitude": 121.73837,
+    "temperature": 16.1,
+    "pedestrian_flow": 8820,
+    "time": "01/24"
+  },
+  {
+    "spot_name": "士林捷運站",
+    "latitude": 25.093155,
+    "longitude": 121.526279,
+    "temperature": 15.8,
+    "pedestrian_flow": 26583,
+    "time": "01/24"
+  },
+  {
+    "spot_name": "宜蘭車站",
+    "latitude": 24.75462,
+    "longitude": 121.75791,
+    "temperature": 16.0,
+    "pedestrian_flow": 3968,
+    "time": "01/24"
+  },
+  {
+    "spot_name": "屏東車站",
+    "latitude": 22.66905,
+    "longitude": 120.48617,
+    "temperature": 20.0,
+    "pedestrian_flow": 13150,
+    "time": "01/24"
+  },
+  {
+    "spot_name": "彰化車站",
+    "latitude": 24.08177,
+    "longitude": 120.53854,
+    "temperature": 17.5,
+    "pedestrian_flow": 15487,
+    "time": "01/24"
+  },
+  {
+    "spot_name": "新竹車站",
+    "latitude": 24.80157,
+    "longitude": 120.97157,
+    "temperature": 16.9,
+    "pedestrian_flow": 22790,
+    "time": "01/24"
+  },
+  {
+    "spot_name": "桃園車站",
+    "latitude": 24.98942,
+    "longitude": 121.31384,
+    "temperature": 15.9,
+    "pedestrian_flow": 28009,
+    "time": "01/24"
+  },
+  {
+    "spot_name": "淡水捷運站",
+    "latitude": 25.167812,
+    "longitude": 121.444747,
+    "temperature": 16.2,
+    "pedestrian_flow": 31452,
+    "time": "01/24"
+  },
+  {
+    "spot_name": "花蓮車站",
+    "latitude": 23.99264,
+    "longitude": 121.60158,
+    "temperature": 17.5,
+    "pedestrian_flow": 10845,
+    "time": "01/24"
+  },
+  {
+    "spot_name": "西門捷運站",
+    "latitude": 25.042385,
+    "longitude": 121.508319,
+    "temperature": 15.8,
+    "pedestrian_flow": 79931,
+    "time": "01/24"
+  },
+  {
+    "spot_name": "高雄車站",
+    "latitude": 22.63946,
+    "longitude": 120.30292,
+    "temperature": 19.4,
+    "pedestrian_flow": 18733,
+    "time": "01/24"
+  },
+  {
+    "spot_name": "台中車站",
+    "latitude": 24.13728,
+    "longitude": 120.68691,
+    "temperature": 17.9,
+    "pedestrian_flow": 32470,
+    "time": "01/25"
+  },
+  {
+    "spot_name": "台北101世貿站",
+    "latitude": 25.032958,
+    "longitude": 121.565456,
+    "temperature": 18.4,
+    "pedestrian_flow": 42414,
+    "time": "01/25"
+  },
+  {
+    "spot_name": "台南車站",
+    "latitude": 22.99719,
+    "longitude": 120.21249,
+    "temperature": 19.6,
+    "pedestrian_flow": 28637,
+    "time": "01/25"
+  },
+  {
+    "spot_name": "台東車站",
+    "latitude": 22.79372,
+    "longitude": 121.1231,
+    "temperature": 18.1,
+    "pedestrian_flow": 6265,
+    "time": "01/25"
+  },
+  {
+    "spot_name": "嘉義車站",
+    "latitude": 23.47902,
+    "longitude": 120.44124,
+    "temperature": 18.6,
+    "pedestrian_flow": 11780,
+    "time": "01/25"
+  },
+  {
+    "spot_name": "基隆車站",
+    "latitude": 25.13191,
+    "longitude": 121.73837,
+    "temperature": 18.3,
+    "pedestrian_flow": 9242,
+    "time": "01/25"
+  },
+  {
+    "spot_name": "士林捷運站",
+    "latitude": 25.093155,
+    "longitude": 121.526279,
+    "temperature": 18.0,
+    "pedestrian_flow": 25009,
+    "time": "01/25"
+  },
+  {
+    "spot_name": "宜蘭車站",
+    "latitude": 24.75462,
+    "longitude": 121.75791,
+    "temperature": 16.6,
+    "pedestrian_flow": 4034,
+    "time": "01/25"
+  },
+  {
+    "spot_name": "屏東車站",
+    "latitude": 22.66905,
+    "longitude": 120.48617,
+    "temperature": 20.7,
+    "pedestrian_flow": 11976,
+    "time": "01/25"
+  },
+  {
+    "spot_name": "彰化車站",
+    "latitude": 24.08177,
+    "longitude": 120.53854,
+    "temperature": 18.0,
+    "pedestrian_flow": 15562,
+    "time": "01/25"
+  },
+  {
+    "spot_name": "新竹車站",
+    "latitude": 24.80157,
+    "longitude": 120.97157,
+    "temperature": 17.4,
+    "pedestrian_flow": 24842,
+    "time": "01/25"
+  },
+  {
+    "spot_name": "桃園車站",
+    "latitude": 24.98942,
+    "longitude": 121.31384,
+    "temperature": 17.8,
+    "pedestrian_flow": 28145,
+    "time": "01/25"
+  },
+  {
+    "spot_name": "淡水捷運站",
+    "latitude": 25.167812,
+    "longitude": 121.444747,
+    "temperature": 18.7,
+    "pedestrian_flow": 35070,
+    "time": "01/25"
+  },
+  {
+    "spot_name": "花蓮車站",
+    "latitude": 23.99264,
+    "longitude": 121.60158,
+    "temperature": 18.1,
+    "pedestrian_flow": 10905,
+    "time": "01/25"
+  },
+  {
+    "spot_name": "西門捷運站",
+    "latitude": 25.042385,
+    "longitude": 121.508319,
+    "temperature": 18.0,
+    "pedestrian_flow": 72176,
+    "time": "01/25"
+  },
+  {
+    "spot_name": "高雄車站",
+    "latitude": 22.63946,
+    "longitude": 120.30292,
+    "temperature": 20.6,
+    "pedestrian_flow": 18099,
+    "time": "01/25"
+  },
+  {
+    "spot_name": "台中車站",
+    "latitude": 24.13728,
+    "longitude": 120.68691,
+    "temperature": 19.4,
+    "pedestrian_flow": 19525,
+    "time": "01/26"
+  },
+  {
+    "spot_name": "台北101世貿站",
+    "latitude": 25.032958,
+    "longitude": 121.565456,
+    "temperature": 18.2,
+    "pedestrian_flow": 37142,
+    "time": "01/26"
+  },
+  {
+    "spot_name": "台南車站",
+    "latitude": 22.99719,
+    "longitude": 120.21249,
+    "temperature": 20.4,
+    "pedestrian_flow": 22962,
+    "time": "01/26"
+  },
+  {
+    "spot_name": "台東車站",
+    "latitude": 22.79372,
+    "longitude": 121.1231,
+    "temperature": 19.1,
+    "pedestrian_flow": 4979,
+    "time": "01/26"
+  },
+  {
+    "spot_name": "嘉義車站",
+    "latitude": 23.47902,
+    "longitude": 120.44124,
+    "temperature": 19.5,
+    "pedestrian_flow": 8765,
+    "time": "01/26"
+  },
+  {
+    "spot_name": "基隆車站",
+    "latitude": 25.13191,
+    "longitude": 121.73837,
+    "temperature": 19.5,
+    "pedestrian_flow": 8645,
+    "time": "01/26"
+  },
+  {
+    "spot_name": "士林捷運站",
+    "latitude": 25.093155,
+    "longitude": 121.526279,
+    "temperature": 17.8,
+    "pedestrian_flow": 26181,
+    "time": "01/26"
+  },
+  {
+    "spot_name": "宜蘭車站",
+    "latitude": 24.75462,
+    "longitude": 121.75791,
+    "temperature": 18.9,
+    "pedestrian_flow": 3821,
+    "time": "01/26"
+  },
+  {
+    "spot_name": "屏東車站",
+    "latitude": 22.66905,
+    "longitude": 120.48617,
+    "temperature": 21.7,
+    "pedestrian_flow": 10261,
+    "time": "01/26"
+  },
+  {
+    "spot_name": "彰化車站",
+    "latitude": 24.08177,
+    "longitude": 120.53854,
+    "temperature": 19.9,
+    "pedestrian_flow": 11544,
+    "time": "01/26"
+  },
+  {
+    "spot_name": "新竹車站",
+    "latitude": 24.80157,
+    "longitude": 120.97157,
+    "temperature": 18.0,
+    "pedestrian_flow": 18859,
+    "time": "01/26"
+  },
+  {
+    "spot_name": "桃園車站",
+    "latitude": 24.98942,
+    "longitude": 121.31384,
+    "temperature": 17.4,
+    "pedestrian_flow": 26833,
+    "time": "01/26"
+  },
+  {
+    "spot_name": "淡水捷運站",
+    "latitude": 25.167812,
+    "longitude": 121.444747,
+    "temperature": 17.8,
+    "pedestrian_flow": 32157,
+    "time": "01/26"
+  },
+  {
+    "spot_name": "花蓮車站",
+    "latitude": 23.99264,
+    "longitude": 121.60158,
+    "temperature": 19.2,
+    "pedestrian_flow": 9050,
+    "time": "01/26"
+  },
+  {
+    "spot_name": "西門捷運站",
+    "latitude": 25.042385,
+    "longitude": 121.508319,
+    "temperature": 17.8,
+    "pedestrian_flow": 66566,
+    "time": "01/26"
+  },
+  {
+    "spot_name": "高雄車站",
+    "latitude": 22.63946,
+    "longitude": 120.30292,
+    "temperature": 21.3,
+    "pedestrian_flow": 14019,
+    "time": "01/26"
+  },
+  {
+    "spot_name": "台中車站",
+    "latitude": 24.13728,
+    "longitude": 120.68691,
+    "temperature": 19.1,
+    "pedestrian_flow": 19326,
+    "time": "01/27"
+  },
+  {
+    "spot_name": "台北101世貿站",
+    "latitude": 25.032958,
+    "longitude": 121.565456,
+    "temperature": 16.7,
+    "pedestrian_flow": 32294,
+    "time": "01/27"
+  },
+  {
+    "spot_name": "台南車站",
+    "latitude": 22.99719,
+    "longitude": 120.21249,
+    "temperature": 19.9,
+    "pedestrian_flow": 21794,
+    "time": "01/27"
+  },
+  {
+    "spot_name": "台東車站",
+    "latitude": 22.79372,
+    "longitude": 121.1231,
+    "temperature": 18.7,
+    "pedestrian_flow": 4442,
+    "time": "01/27"
+  },
+  {
+    "spot_name": "嘉義車站",
+    "latitude": 23.47902,
+    "longitude": 120.44124,
+    "temperature": 19.5,
+    "pedestrian_flow": 8748,
+    "time": "01/27"
+  },
+  {
+    "spot_name": "基隆車站",
+    "latitude": 25.13191,
+    "longitude": 121.73837,
+    "temperature": 16.4,
+    "pedestrian_flow": 7888,
+    "time": "01/27"
+  },
+  {
+    "spot_name": "士林捷運站",
+    "latitude": 25.093155,
+    "longitude": 121.526279,
+    "temperature": 16.3,
+    "pedestrian_flow": 26396,
+    "time": "01/27"
+  },
+  {
+    "spot_name": "宜蘭車站",
+    "latitude": 24.75462,
+    "longitude": 121.75791,
+    "temperature": 16.8,
+    "pedestrian_flow": 3398,
+    "time": "01/27"
+  },
+  {
+    "spot_name": "屏東車站",
+    "latitude": 22.66905,
+    "longitude": 120.48617,
+    "temperature": 21.8,
+    "pedestrian_flow": 10175,
+    "time": "01/27"
+  },
+  {
+    "spot_name": "彰化車站",
+    "latitude": 24.08177,
+    "longitude": 120.53854,
+    "temperature": 19.2,
+    "pedestrian_flow": 11153,
+    "time": "01/27"
+  },
+  {
+    "spot_name": "新竹車站",
+    "latitude": 24.80157,
+    "longitude": 120.97157,
+    "temperature": 16.8,
+    "pedestrian_flow": 17047,
+    "time": "01/27"
+  },
+  {
+    "spot_name": "桃園車站",
+    "latitude": 24.98942,
+    "longitude": 121.31384,
+    "temperature": 16.0,
+    "pedestrian_flow": 25318,
+    "time": "01/27"
+  },
+  {
+    "spot_name": "淡水捷運站",
+    "latitude": 25.167812,
+    "longitude": 121.444747,
+    "temperature": 16.2,
+    "pedestrian_flow": 29451,
+    "time": "01/27"
+  },
+  {
+    "spot_name": "花蓮車站",
+    "latitude": 23.99264,
+    "longitude": 121.60158,
+    "temperature": 18.6,
+    "pedestrian_flow": 7523,
+    "time": "01/27"
+  },
+  {
+    "spot_name": "西門捷運站",
+    "latitude": 25.042385,
+    "longitude": 121.508319,
+    "temperature": 16.3,
+    "pedestrian_flow": 65929,
+    "time": "01/27"
+  },
+  {
+    "spot_name": "高雄車站",
+    "latitude": 22.63946,
+    "longitude": 120.30292,
+    "temperature": 21.2,
+    "pedestrian_flow": 13446,
+    "time": "01/27"
+  },
+  {
+    "spot_name": "台中車站",
+    "latitude": 24.13728,
+    "longitude": 120.68691,
+    "temperature": 16.5,
+    "pedestrian_flow": 19328,
+    "time": "01/28"
+  },
+  {
+    "spot_name": "台北101世貿站",
+    "latitude": 25.032958,
+    "longitude": 121.565456,
+    "temperature": 15.3,
+    "pedestrian_flow": 33271,
+    "time": "01/28"
+  },
+  {
+    "spot_name": "台南車站",
+    "latitude": 22.99719,
+    "longitude": 120.21249,
+    "temperature": 18.5,
+    "pedestrian_flow": 21661,
+    "time": "01/28"
+  },
+  {
+    "spot_name": "台東車站",
+    "latitude": 22.79372,
+    "longitude": 121.1231,
+    "temperature": 17.6,
+    "pedestrian_flow": 4431,
+    "time": "01/28"
+  },
+  {
+    "spot_name": "嘉義車站",
+    "latitude": 23.47902,
+    "longitude": 120.44124,
+    "temperature": 17.5,
+    "pedestrian_flow": 8417,
+    "time": "01/28"
+  },
+  {
+    "spot_name": "基隆車站",
+    "latitude": 25.13191,
+    "longitude": 121.73837,
+    "temperature": 14.9,
+    "pedestrian_flow": 7797,
+    "time": "01/28"
+  },
+  {
+    "spot_name": "士林捷運站",
+    "latitude": 25.093155,
+    "longitude": 121.526279,
+    "temperature": 14.9,
+    "pedestrian_flow": 26202,
+    "time": "01/28"
+  },
+  {
+    "spot_name": "宜蘭車站",
+    "latitude": 24.75462,
+    "longitude": 121.75791,
+    "temperature": 15.6,
+    "pedestrian_flow": 3650,
+    "time": "01/28"
+  },
+  {
+    "spot_name": "屏東車站",
+    "latitude": 22.66905,
+    "longitude": 120.48617,
+    "temperature": 20.2,
+    "pedestrian_flow": 10202,
+    "time": "01/28"
+  },
+  {
+    "spot_name": "彰化車站",
+    "latitude": 24.08177,
+    "longitude": 120.53854,
+    "temperature": 16.8,
+    "pedestrian_flow": 11402,
+    "time": "01/28"
+  },
+  {
+    "spot_name": "新竹車站",
+    "latitude": 24.80157,
+    "longitude": 120.97157,
+    "temperature": 15.4,
+    "pedestrian_flow": 17385,
+    "time": "01/28"
+  },
+  {
+    "spot_name": "桃園車站",
+    "latitude": 24.98942,
+    "longitude": 121.31384,
+    "temperature": 14.7,
+    "pedestrian_flow": 25367,
+    "time": "01/28"
+  },
+  {
+    "spot_name": "淡水捷運站",
+    "latitude": 25.167812,
+    "longitude": 121.444747,
+    "temperature": 14.9,
+    "pedestrian_flow": 29561,
+    "time": "01/28"
+  },
+  {
+    "spot_name": "花蓮車站",
+    "latitude": 23.99264,
+    "longitude": 121.60158,
+    "temperature": 17.1,
+    "pedestrian_flow": 7942,
+    "time": "01/28"
+  },
+  {
+    "spot_name": "西門捷運站",
+    "latitude": 25.042385,
+    "longitude": 121.508319,
+    "temperature": 14.9,
+    "pedestrian_flow": 67095,
+    "time": "01/28"
+  },
+  {
+    "spot_name": "高雄車站",
+    "latitude": 22.63946,
+    "longitude": 120.30292,
+    "temperature": 19.5,
+    "pedestrian_flow": 14034,
+    "time": "01/28"
+  },
+  {
+    "spot_name": "台中車站",
+    "latitude": 24.13728,
+    "longitude": 120.68691,
+    "temperature": 18.5,
+    "pedestrian_flow": 19728,
+    "time": "01/29"
+  },
+  {
+    "spot_name": "台北101世貿站",
+    "latitude": 25.032958,
+    "longitude": 121.565456,
+    "temperature": 17.5,
+    "pedestrian_flow": 33004,
+    "time": "01/29"
+  },
+  {
+    "spot_name": "台南車站",
+    "latitude": 22.99719,
+    "longitude": 120.21249,
+    "temperature": 19.0,
+    "pedestrian_flow": 22164,
+    "time": "01/29"
+  },
+  {
+    "spot_name": "台東車站",
+    "latitude": 22.79372,
+    "longitude": 121.1231,
+    "temperature": 18.2,
+    "pedestrian_flow": 4216,
+    "time": "01/29"
+  },
+  {
+    "spot_name": "嘉義車站",
+    "latitude": 23.47902,
+    "longitude": 120.44124,
+    "temperature": 18.6,
+    "pedestrian_flow": 8491,
+    "time": "01/29"
+  },
+  {
+    "spot_name": "基隆車站",
+    "latitude": 25.13191,
+    "longitude": 121.73837,
+    "temperature": 17.7,
+    "pedestrian_flow": 8842,
+    "time": "01/29"
+  },
+  {
+    "spot_name": "士林捷運站",
+    "latitude": 25.093155,
+    "longitude": 121.526279,
+    "temperature": 17.1,
+    "pedestrian_flow": 28188,
+    "time": "01/29"
+  },
+  {
+    "spot_name": "宜蘭車站",
+    "latitude": 24.75462,
+    "longitude": 121.75791,
+    "temperature": 16.6,
+    "pedestrian_flow": 3581,
+    "time": "01/29"
+  },
+  {
+    "spot_name": "屏東車站",
+    "latitude": 22.66905,
+    "longitude": 120.48617,
+    "temperature": 20.2,
+    "pedestrian_flow": 10592,
+    "time": "01/29"
+  },
+  {
+    "spot_name": "彰化車站",
+    "latitude": 24.08177,
+    "longitude": 120.53854,
+    "temperature": 18.0,
+    "pedestrian_flow": 11396,
+    "time": "01/29"
+  },
+  {
+    "spot_name": "新竹車站",
+    "latitude": 24.80157,
+    "longitude": 120.97157,
+    "temperature": 17.8,
+    "pedestrian_flow": 18728,
+    "time": "01/29"
+  },
+  {
+    "spot_name": "桃園車站",
+    "latitude": 24.98942,
+    "longitude": 121.31384,
+    "temperature": 17.1,
+    "pedestrian_flow": 27094,
+    "time": "01/29"
+  },
+  {
+    "spot_name": "淡水捷運站",
+    "latitude": 25.167812,
+    "longitude": 121.444747,
+    "temperature": 17.4,
+    "pedestrian_flow": 34034,
+    "time": "01/29"
+  },
+  {
+    "spot_name": "花蓮車站",
+    "latitude": 23.99264,
+    "longitude": 121.60158,
+    "temperature": 17.1,
+    "pedestrian_flow": 8076,
+    "time": "01/29"
+  },
+  {
+    "spot_name": "西門捷運站",
+    "latitude": 25.042385,
+    "longitude": 121.508319,
+    "temperature": 17.1,
+    "pedestrian_flow": 68274,
+    "time": "01/29"
+  },
+  {
+    "spot_name": "高雄車站",
+    "latitude": 22.63946,
+    "longitude": 120.30292,
+    "temperature": 19.7,
+    "pedestrian_flow": 13986,
+    "time": "01/29"
+  },
+  {
+    "spot_name": "台中車站",
+    "latitude": 24.13728,
+    "longitude": 120.68691,
+    "temperature": 19.3,
+    "pedestrian_flow": 25699,
+    "time": "01/30"
+  },
+  {
+    "spot_name": "台北101世貿站",
+    "latitude": 25.032958,
+    "longitude": 121.565456,
+    "temperature": 19.0,
+    "pedestrian_flow": 35286,
+    "time": "01/30"
+  },
+  {
+    "spot_name": "台南車站",
+    "latitude": 22.99719,
+    "longitude": 120.21249,
+    "temperature": 20.4,
+    "pedestrian_flow": 27248,
+    "time": "01/30"
+  },
+  {
+    "spot_name": "台東車站",
+    "latitude": 22.79372,
+    "longitude": 121.1231,
+    "temperature": 18.8,
+    "pedestrian_flow": 5362,
+    "time": "01/30"
+  },
+  {
+    "spot_name": "嘉義車站",
+    "latitude": 23.47902,
+    "longitude": 120.44124,
+    "temperature": 20.1,
+    "pedestrian_flow": 11277,
+    "time": "01/30"
+  },
+  {
+    "spot_name": "基隆車站",
+    "latitude": 25.13191,
+    "longitude": 121.73837,
+    "temperature": 19.3,
+    "pedestrian_flow": 9962,
+    "time": "01/30"
+  },
+  {
+    "spot_name": "士林捷運站",
+    "latitude": 25.093155,
+    "longitude": 121.526279,
+    "temperature": 18.6,
+    "pedestrian_flow": 29703,
+    "time": "01/30"
+  },
+  {
+    "spot_name": "宜蘭車站",
+    "latitude": 24.75462,
+    "longitude": 121.75791,
+    "temperature": 17.2,
+    "pedestrian_flow": 4196,
+    "time": "01/30"
+  },
+  {
+    "spot_name": "屏東車站",
+    "latitude": 22.66905,
+    "longitude": 120.48617,
+    "temperature": 22.0,
+    "pedestrian_flow": 12747,
+    "time": "01/30"
+  },
+  {
+    "spot_name": "彰化車站",
+    "latitude": 24.08177,
+    "longitude": 120.53854,
+    "temperature": 19.3,
+    "pedestrian_flow": 14512,
+    "time": "01/30"
+  },
+  {
+    "spot_name": "新竹車站",
+    "latitude": 24.80157,
+    "longitude": 120.97157,
+    "temperature": 18.2,
+    "pedestrian_flow": 21814,
+    "time": "01/30"
+  },
+  {
+    "spot_name": "桃園車站",
+    "latitude": 24.98942,
+    "longitude": 121.31384,
+    "temperature": 18.2,
+    "pedestrian_flow": 30732,
+    "time": "01/30"
+  },
+  {
+    "spot_name": "淡水捷運站",
+    "latitude": 25.167812,
+    "longitude": 121.444747,
+    "temperature": 18.7,
+    "pedestrian_flow": 35215,
+    "time": "01/30"
+  },
+  {
+    "spot_name": "花蓮車站",
+    "latitude": 23.99264,
+    "longitude": 121.60158,
+    "temperature": 18.3,
+    "pedestrian_flow": 10846,
+    "time": "01/30"
+  },
+  {
+    "spot_name": "西門捷運站",
+    "latitude": 25.042385,
+    "longitude": 121.508319,
+    "temperature": 18.6,
+    "pedestrian_flow": 74585,
+    "time": "01/30"
+  },
+  {
+    "spot_name": "高雄車站",
+    "latitude": 22.63946,
+    "longitude": 120.30292,
+    "temperature": 21.2,
+    "pedestrian_flow": 16474,
+    "time": "01/30"
+  },
+  {
+    "spot_name": "台中車站",
+    "latitude": 24.13728,
+    "longitude": 120.68691,
+    "temperature": 17.7,
+    "pedestrian_flow": 30404,
+    "time": "01/31"
+  },
+  {
+    "spot_name": "台北101世貿站",
+    "latitude": 25.032958,
+    "longitude": 121.565456,
+    "temperature": 16.9,
+    "pedestrian_flow": 29221,
+    "time": "01/31"
+  },
+  {
+    "spot_name": "台南車站",
+    "latitude": 22.99719,
+    "longitude": 120.21249,
+    "temperature": 19.8,
+    "pedestrian_flow": 27429,
+    "time": "01/31"
+  },
+  {
+    "spot_name": "台東車站",
+    "latitude": 22.79372,
+    "longitude": 121.1231,
+    "temperature": 19.0,
+    "pedestrian_flow": 4942,
+    "time": "01/31"
+  },
+  {
+    "spot_name": "嘉義車站",
+    "latitude": 23.47902,
+    "longitude": 120.44124,
+    "temperature": 19.3,
+    "pedestrian_flow": 10980,
+    "time": "01/31"
+  },
+  {
+    "spot_name": "基隆車站",
+    "latitude": 25.13191,
+    "longitude": 121.73837,
+    "temperature": 16.6,
+    "pedestrian_flow": 8857,
+    "time": "01/31"
+  },
+  {
+    "spot_name": "士林捷運站",
+    "latitude": 25.093155,
+    "longitude": 121.526279,
+    "temperature": 16.5,
+    "pedestrian_flow": 25230,
+    "time": "01/31"
+  },
+  {
+    "spot_name": "宜蘭車站",
+    "latitude": 24.75462,
+    "longitude": 121.75791,
+    "temperature": 17.4,
+    "pedestrian_flow": 4405,
+    "time": "01/31"
+  },
+  {
+    "spot_name": "屏東車站",
+    "latitude": 22.66905,
+    "longitude": 120.48617,
+    "temperature": 21.7,
+    "pedestrian_flow": 12138,
+    "time": "01/31"
+  },
+  {
+    "spot_name": "彰化車站",
+    "latitude": 24.08177,
+    "longitude": 120.53854,
+    "temperature": 18.3,
+    "pedestrian_flow": 14728,
+    "time": "01/31"
+  },
+  {
+    "spot_name": "新竹車站",
+    "latitude": 24.80157,
+    "longitude": 120.97157,
+    "temperature": 16.4,
+    "pedestrian_flow": 20907,
+    "time": "01/31"
+  },
+  {
+    "spot_name": "桃園車站",
+    "latitude": 24.98942,
+    "longitude": 121.31384,
+    "temperature": 15.9,
+    "pedestrian_flow": 26706,
+    "time": "01/31"
+  },
+  {
+    "spot_name": "淡水捷運站",
+    "latitude": 25.167812,
+    "longitude": 121.444747,
+    "temperature": 16.2,
+    "pedestrian_flow": 27864,
+    "time": "01/31"
+  },
+  {
+    "spot_name": "花蓮車站",
+    "latitude": 23.99264,
+    "longitude": 121.60158,
+    "temperature": 18.9,
+    "pedestrian_flow": 10206,
+    "time": "01/31"
+  },
+  {
+    "spot_name": "西門捷運站",
+    "latitude": 25.042385,
+    "longitude": 121.508319,
+    "temperature": 16.5,
+    "pedestrian_flow": 78782,
+    "time": "01/31"
+  },
+  {
+    "spot_name": "高雄車站",
+    "latitude": 22.63946,
+    "longitude": 120.30292,
+    "temperature": 20.9,
+    "pedestrian_flow": 17853,
+    "time": "01/31"
+  }
+]

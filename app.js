@@ -28,9 +28,10 @@ window.addEventListener('DOMContentLoaded', () => {
   initUI();
   initMap();
   checkApiKeyAndInitMode();
-  updateDashboard();
   setupEventListeners();
-  loadHistoricalMonths();
+  loadHistoricalMonths().then(() => {
+    initBaseSimulation();
+  });
 });
 
 // 初始化 UI 元件的預設顯示
@@ -106,9 +107,9 @@ function updateMapMarkers() {
 
     // 依據人流量計算波紋與圓圈大小
     const baseSize = spot.type === 'indoor' ? 14 : 14;
-    const pulseScale = STATE.mode === 'history'
-      ? Math.min(60, 15 + (flow / 1200)) // 歷史日均人流量較大，除以較大常數
-      : Math.min(60, 15 + (flow / 35)); // 限制最大波紋半徑
+    const isDailyFlow = spot.id.startsWith('tra-') || ['ximending', 'taipei101', 'shilin', 'tamsui'].includes(spot.id);
+    const divisor = isDailyFlow ? 1200 : 35;
+    const pulseScale = Math.min(60, 15 + (flow / divisor));
     const markerTypeBorder = spot.type === 'indoor' ? '#f472b6' : '#34d399'; // 粉色代表室內，綠色代表戶外
 
     // 自訂 HTML Marker 結構
@@ -126,8 +127,8 @@ function updateMapMarkers() {
     });
 
     const labelTemp = STATE.mode === 'history' && STATE.historyViewMode === 'real' ? '歷史月均氣溫' : (STATE.mode === 'live' ? '測站溫度' : '模擬氣溫');
-    const labelFlow = STATE.mode === 'history' ? (STATE.historyViewMode === 'real' ? '歷史日均人流' : '模型預估日人流') : '估計時人流';
-    const unitFlow = STATE.mode === 'history' ? '人次/日' : '人次/小時';
+    const labelFlow = isDailyFlow ? (STATE.mode === 'history' ? (STATE.historyViewMode === 'real' ? '歷史日均人流' : '模型預估日人流') : '估計日人流') : '估計時人流';
+    const unitFlow = isDailyFlow ? '人次/日' : '人次/小時';
     const popupContent = `
       <div style="font-family: var(--font-primary); font-size: 0.85rem; padding: 4px;">
         <strong style="font-size: 0.95rem; color: #fff; border-bottom: 1px solid var(--accent-primary); display:block; padding-bottom:4px; margin-bottom:6px;">${spot.name}</strong>
@@ -288,13 +289,14 @@ function updateDashboard() {
     
   const cardTitle = document.querySelector('#stat-simulated h3');
   const cardTrend = document.querySelector('#stat-simulated .stat-trend');
+  const isDailyFlow = spot.id.startsWith('tra-') || ['ximending', 'taipei101', 'shilin', 'tamsui'].includes(spot.id);
 
   if (STATE.mode === 'history') {
     if (cardTitle) cardTitle.textContent = STATE.historyViewMode === 'real' ? '真實歷史平均人流量' : '模型推算人流量';
-    if (cardTrend) cardTrend.textContent = '單位：日出站人次';
+    if (cardTrend) cardTrend.textContent = isDailyFlow ? '單位：日出站人次' : '單位：預估參訪人次 / 小時';
   } else {
-    if (cardTitle) cardTitle.textContent = '當前估計人流量';
-    if (cardTrend) cardTrend.textContent = '單位：預估參訪人次 / 小時';
+    if (cardTitle) cardTitle.textContent = isDailyFlow ? '當前估計日人流量' : '當前估計人流量';
+    if (cardTrend) cardTrend.textContent = isDailyFlow ? '單位：預估日出站人次' : '單位：預估參訪人次 / 小時';
   }
   
   document.getElementById('val-sim-flow').textContent = flow.toLocaleString();
@@ -734,8 +736,7 @@ function setupEventListeners() {
     
     // 切換回預設並重新加載地圖與看板
     selectSpot('taipei101');
-    updateMapMarkers();
-    updateDashboard();
+    initBaseSimulation();
   });
 
   // E. 載入真實歷史數據按鈕事件
@@ -1029,6 +1030,104 @@ async function loadHistoricalMonths() {
     console.error('載入月份清單出錯:', error);
     select.innerHTML = '<option value="">載入失敗，請重新整理</option>';
     showToast('載入捷運歷史月份清單失敗！', 'danger');
+  }
+}
+// 從後端載入所有已註冊的真實歷史資料，重新建構預設的模擬迴歸算法
+async function initBaseSimulation() {
+  const select = document.getElementById('mrt-month-select');
+  if (!select) return;
+
+  try {
+    const response = await fetch('./data/months.json');
+    if (!response.ok) throw new Error('無法取得月份清單');
+    const months = await response.json();
+    
+    // 初始化所有 spots 的 allHistoryData 用於合併
+    STATE.spots.forEach(s => s.allHistoryData = []);
+
+    // 依序抓取所有可用月份的 JSON
+    for (const m of months) {
+      const monthStr = m.month.toString().padStart(2, '0');
+      const url = `./data/mrt_${m.year}_${monthStr}.json`;
+      try {
+        const res = await fetch(url);
+        if (res.ok) {
+          const data = await res.json();
+          data.forEach(item => {
+            const spotId = mapStationNameToId(item.spot_name);
+            if (spotId) {
+              const spot = STATE.spots.find(s => s.id === spotId);
+              if (spot) {
+                if (!spot.allHistoryData) spot.allHistoryData = [];
+                spot.allHistoryData.push({
+                  temp: item.temperature,
+                  flow: item.pedestrian_flow,
+                  timeLabel: item.time
+                });
+              }
+            }
+          });
+        }
+      } catch (err) {
+        console.error(`載入 ${m.year}/${monthStr} 的基礎資料失敗:`, err);
+      }
+    }
+
+    // 計算各站線性迴歸，並覆寫其模擬預測算法與小時/月份數據
+    STATE.spots.forEach(spot => {
+      if (spot.allHistoryData && spot.allHistoryData.length > 0) {
+        const temps = spot.allHistoryData.map(h => h.temp);
+        const flows = spot.allHistoryData.map(h => h.flow);
+        const stats = calculateRegression(temps, flows);
+        
+        // 1. 覆寫預設模擬函數 (直套日流量線性迴歸)
+        spot.simulate = (t, w) => {
+          const est = stats.slope * t + stats.intercept;
+          let mod = 1.0;
+          if (w === 'rainy') mod = 0.8;
+          if (w === 'typhoon') mod = 0.1;
+          if (w === 'cold') mod = 0.9;
+          return Math.max(0, Math.round(est * mod));
+        };
+
+        // 2. 重新對齊預設的 hourly 數據集 (將估算日流量除以 24 作為逐時平均值呈現)
+        spot.hourly = spot.hourly.map(h => ({
+          hour: h.hour,
+          temp: h.temp,
+          flow: Math.round(spot.simulate(h.temp, 'sunny') / 24)
+        }));
+
+        // 3. 重新對齊預設的 monthly 數據集 (直接使用日運量)
+        spot.monthly = spot.monthly.map(m => {
+          // 如果該月份有真實資料，直接使用真實資料的平均日運量
+          const monthStr = m.month.toString().padStart(2, '0');
+          const monthData = spot.allHistoryData.filter(h => h.timeLabel.startsWith(monthStr + '/'));
+          if (monthData.length > 0) {
+            const avgFlow = monthData.reduce((sum, d) => sum + d.flow, 0) / monthData.length;
+            const avgTemp = monthData.reduce((sum, d) => sum + d.temp, 0) / monthData.length;
+            return {
+              month: m.month,
+              temp: Math.round(avgTemp * 10) / 10,
+              flow: Math.round(avgFlow)
+            };
+          } else {
+            // 沒有真實資料的月份，採用迴歸預測日運量
+            return {
+              month: m.month,
+              temp: m.temp,
+              flow: spot.simulate(m.temp, 'sunny')
+            };
+          }
+        });
+      }
+    });
+
+    // 重新更新地圖標記與看板，使網頁啟動即呈現基於現實的迴歸預估
+    updateMapMarkers();
+    updateDashboard();
+    console.log("✨ 已成功根據 2026 現實歷史資料初始化迴歸模擬預測模型！");
+  } catch (error) {
+    console.error('資源初始化現實資料迴歸模擬出錯:', error);
   }
 }
 
