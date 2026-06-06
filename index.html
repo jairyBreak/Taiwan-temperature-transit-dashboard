@@ -14,12 +14,13 @@
   <!-- Leaflet.js 地圖庫 -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="leaflet-idw.js"></script>
   
   <!-- Chart.js 圖表庫 -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   
   <!-- 主樣式表 -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=5.1">
 </head>
 <body>
   <div class="app-container">
@@ -106,14 +107,14 @@
           
           <div class="control-group">
             <div class="slider-header">
-              <span>模擬氣溫 (<span id="temp-val-display">25</span>°C)</span>
+              <span>模擬氣溫調整 (<span id="temp-val-display">+0.0</span>°C)</span>
               <span class="temp-category" id="temp-desc">舒適</span>
             </div>
-            <input type="range" id="temp-slider" min="10" max="40" value="25" step="0.5" class="custom-slider">
+            <input type="range" id="temp-slider" min="-10" max="10" value="0" step="0.5" class="custom-slider">
             <div class="slider-labels">
-              <span>10°C (低溫)</span>
-              <span>25°C</span>
-              <span>40°C (炎熱)</span>
+              <span>-10°C (降溫)</span>
+              <span>0°C (基準值)</span>
+              <span>+10°C (升溫)</span>
             </div>
           </div>
           
@@ -172,13 +173,28 @@
         <!-- 地圖展示卡 -->
         <div class="card map-card">
           <div class="map-header-overlay">
-            <span class="map-title-text"><i class="fa-solid fa-earth-asia"></i> 台北市景點氣溫與人流分佈地圖</span>
+            <span class="map-title-text"><i class="fa-solid fa-earth-asia"></i> 台灣景點與區域氣溫人流分佈地圖</span>
             <span class="map-legend">
+              <label class="checkbox-label" style="display: flex; align-items: center; gap: 6px; color: var(--text-main); font-size: 0.8rem; cursor: pointer; margin-right: 15px; user-select: none;">
+                <input type="checkbox" id="chk-temp-overlay" checked style="cursor: pointer; accent-color: var(--accent-primary);">
+                <span>區域氣溫著色</span>
+              </label>
               <span class="legend-item"><span class="legend-color color-indoor"></span>室內商業</span>
               <span class="legend-item"><span class="legend-color color-outdoor"></span>戶外景區</span>
             </span>
           </div>
           <div id="map" class="map-container"></div>
+          
+          <!-- 溫度顏色對照竿 -->
+          <div class="map-temp-legend" id="temp-color-legend">
+            <div class="temp-legend-title">區域氣溫對照 (°C)</div>
+            <div class="temp-gradient-bar"></div>
+            <div class="temp-legend-labels">
+              <span>-10°C</span>
+              <span>15°C</span>
+              <span>40°C</span>
+            </div>
+          </div>
         </div>
 
         <!-- 統計數據看板 -->
@@ -234,7 +250,17 @@
             </div>
           </div>
           <div class="card chart-card">
-            <h2><i class="fa-solid fa-chart-area"></i> 時間維度變化特徵 (雙軸分析)</h2>
+            <div class="chart-header-row" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+              <h2 id="line-chart-title" style="margin-bottom: 0; border-bottom: none; padding-bottom: 0;"><i class="fa-solid fa-chart-area"></i> 時間維度變化特徵 (雙軸分析)</h2>
+              <div class="chart-type-selector" id="chart-datatype-toggle" style="display: flex; gap: 8px;">
+                <button class="weather-btn active" data-type="hourly" style="padding: 6px 12px; font-size: 0.8rem; margin: 0; min-height: unset; line-height: 1.2;">
+                  <i class="fa-solid fa-clock"></i> 24H 逐時
+                </button>
+                <button class="weather-btn" data-type="monthly" style="padding: 6px 12px; font-size: 0.8rem; margin: 0; min-height: unset; line-height: 1.2;">
+                  <i class="fa-solid fa-calendar-days"></i> 12個月 月均
+                </button>
+              </div>
+            </div>
             <div class="chart-wrapper">
               <canvas id="lineChart"></canvas>
             </div>
@@ -266,6 +292,6 @@
   </div>
 
   <!-- 核心 JavaScript -->
-  <script type="module" src="app.js"></script>
+  <script type="module" src="app.js?v=5.1"></script>
 </body>
 </html>

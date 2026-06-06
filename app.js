@@ -1,4 +1,5 @@
-import { SPOTS_DATA, calculateCorrelation, calculateRegression, getCorrelationText } from './data.js';
+import { SPOTS_DATA, calculateCorrelation, calculateRegression, getCorrelationText } from './data.js?v=5.1';
+import { TAIWAN_MASK } from './data/taiwan_mask.js';
 
 // ==========================================================================
 // 1. 全域應用程式狀態 (State)
@@ -7,7 +8,7 @@ const STATE = {
   mode: 'simulation', // 'simulation' 或 'live'
   spots: SPOTS_DATA.map(spot => ({ ...spot })), // 複製預設景點資料並保留模擬函數
   selectedSpotId: 'taipei101',
-  simTemp: 25,
+  tempAdj: 0, // 氣溫調整值 (相對於各站基底溫度的 +/- 偏差)
   simWeather: 'sunny',
   charts: {
     scatter: null,
@@ -15,8 +16,11 @@ const STATE = {
   },
   map: null,
   mapMarkers: {},
+  idwLayer: null,
+  showTempOverlay: true, // 預設開啟區域氣溫著色
   activeDataType: 'hourly', // 'hourly' 或 'monthly'
   historyViewMode: 'model', // 'model' (動態推算) 或 'real' (靜態歷史平均)
+  historyMonth: null, // 當前歷史模式載入的月份
   customDataActive: false,
   rawCustomCSVData: null
 };
@@ -37,7 +41,7 @@ window.addEventListener('DOMContentLoaded', () => {
 // 初始化 UI 元件的預設顯示
 function initUI() {
   renderSpotsList();
-  updateSliderDisplay(STATE.simTemp);
+  updateSliderDisplay(STATE.tempAdj);
 }
 
 // ==========================================================================
@@ -46,23 +50,51 @@ function initUI() {
 function initMap() {
   // 建立台北市中心的 Leaflet 地圖
   STATE.map = L.map('map', {
-    zoomControl: true,
-    attributionControl: false
-  }).setView([25.085, 121.515], 11.5);
+    center: [23.5, 120.5],
+    zoom: 7.5,
+    minZoom: 7,
+    maxZoom: 14,
+    zoomControl: false // 我們自訂位置
+  });
 
-  // 使用 CartoDB Dark Matter 暗色系圖磚，符合本站酷炫深色美學
+  // 加入深色底圖
   L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-    maxZoom: 20
+    attribution: '&copy; OpenStreetMap &copy; CARTO'
+  }).addTo(STATE.map);
+
+  // 初始化遮罩層 (用來遮蓋海上的 IDW 漸層，只露出台灣本島)
+  STATE.maskLayer = L.polygon(TAIWAN_MASK, {
+    color: 'transparent',
+    fillColor: '#202020', // 符合深色地圖的深灰黑色
+    fillOpacity: 1,
+    interactive: false
   }).addTo(STATE.map);
 
   // 繪製地圖標記
   updateMapMarkers();
 }
 
-// 根據目前狀態與模擬數據更新地圖標記的大小與顏色
+// 根據目前狀態與模擬數據更新地圖標記的大小與顏色，並可選繪製區域氣溫著色
 function updateMapMarkers() {
-  const currentTemp = STATE.simTemp;
+  const tempAdj = STATE.tempAdj;
   const currentWeather = STATE.simWeather;
+  
+  let dynamicAdj = 0;
+  if (STATE.mode === 'history') {
+    let sumDiff = 0, count = 0;
+    STATE.spots.forEach(spot => {
+      if (!spot.isHidden && spot.historyData && spot.historyData.length > 0) {
+        const hist = spot.historyData;
+        const avgTemp = hist.reduce((sum, d) => sum + d.temp, 0) / hist.length;
+        const simBase = getSpotSimulatedTemp(spot, 0);
+        sumDiff += (avgTemp - simBase);
+        count++;
+      }
+    });
+    if (count > 0) dynamicAdj = sumDiff / count;
+  }
+
+  const idwPoints = [];
 
   STATE.spots.forEach(spot => {
     // 檢查歷史模式是否有數據
@@ -80,21 +112,60 @@ function updateMapMarkers() {
     // 計算模擬、即時或歷史人流量 (根據檢視模式)
     let flow, temp;
     
-    if (STATE.mode === 'history' && STATE.historyViewMode === 'real') {
+    if (STATE.mode === 'history') {
       const hist = spot.historyData || [];
-      const sumTemp = hist.reduce((sum, d) => sum + d.temp, 0);
-      const sumFlow = hist.reduce((sum, d) => sum + d.flow, 0);
-      temp = sumTemp / hist.length;
-      flow = Math.round(sumFlow / hist.length);
+      if (hist.length === 0) {
+        // 沒有歷史數據的背景節點，直接從其內建的「月平均氣候資料庫」讀取該月份的基準溫度
+        const monthData = spot.monthly && STATE.historyMonth ? spot.monthly.find(m => m.month === STATE.historyMonth) : null;
+        if (monthData) {
+          temp = monthData.temp + (STATE.historyViewMode === 'model' ? tempAdj : 0);
+        } else {
+          temp = getSpotSimulatedTemp(spot, dynamicAdj + (STATE.historyViewMode === 'model' ? tempAdj : 0));
+        }
+        flow = spot.simulate(temp, STATE.simWeather);
+      } else {
+        const sumTemp = hist.reduce((sum, d) => sum + d.temp && !isNaN(d.temp) ? sum + d.temp : sum, 0);
+        const validHistCount = hist.filter(d => !isNaN(d.temp)).length || 1;
+        const avgTemp = sumTemp / validHistCount;
+        
+        if (STATE.historyViewMode === 'real') {
+          const sumFlow = hist.reduce((sum, d) => sum + d.flow && !isNaN(d.flow) ? sum + d.flow : sum, 0);
+          temp = avgTemp;
+          flow = Math.round(sumFlow / validHistCount);
+        } else {
+          // 'model' 動態推算模式：基底為當地歷史均溫 + 滑桿相對調整值
+          temp = avgTemp + tempAdj;
+          flow = spot.simulate(temp, STATE.simWeather);
+        }
+      }
     } else {
+      const simTemp = getSpotSimulatedTemp(spot, tempAdj);
       flow = STATE.mode === 'live' && spot.liveFlow !== undefined 
         ? spot.liveFlow 
-        : spot.simulate(currentTemp, currentWeather);
+        : spot.simulate(simTemp, currentWeather);
         
       temp = STATE.mode === 'live' && spot.liveTemp !== undefined 
         ? spot.liveTemp 
-        : currentTemp;
+        : simTemp;
     }
+
+    // 防呆機制：若溫度因為任何原因算出 NaN，退回預設模擬氣溫
+    if (isNaN(temp)) {
+      temp = getSpotSimulatedTemp(spot, 0);
+    }
+    if (isNaN(flow)) {
+      flow = spot.simulate(temp, STATE.simWeather);
+    }
+
+    // IDW 演算法不允許數值 <= 0，否則會變成全透明造成地圖「缺口」。
+    // 將所有溫度平移 +20，使範圍 (-20°C ~ 40°C) 映射為正數 (0 ~ 60)
+    let shiftedTemp = temp + 20;
+    // 確保即使異常極寒，也不會小於或等於 0
+    if (shiftedTemp <= 0.1) shiftedTemp = 0.1;
+    
+    idwPoints.push([spot.lat, spot.lng, shiftedTemp]);
+
+    if (spot.isHidden) return; // 不建立 Marker 和 Popup樣式
 
     // 計算自訂 Marker 樣式
     // 溫度色彩插值 (HSL: 220 藍色 -> 0 紅色)
@@ -107,7 +178,7 @@ function updateMapMarkers() {
 
     // 依據人流量計算波紋與圓圈大小
     const baseSize = spot.type === 'indoor' ? 14 : 14;
-    const isDailyFlow = spot.id.startsWith('tra-') || ['ximending', 'taipei101', 'shilin', 'tamsui'].includes(spot.id);
+    const isDailyFlow = spot.id !== 'yangmingshan';
     const divisor = isDailyFlow ? 1200 : 35;
     const pulseScale = Math.min(60, 15 + (flow / divisor));
     const markerTypeBorder = spot.type === 'indoor' ? '#f472b6' : '#34d399'; // 粉色代表室內，綠色代表戶外
@@ -159,7 +230,60 @@ function updateMapMarkers() {
       
       STATE.mapMarkers[spot.id] = marker;
     }
+
   });
+
+  // 更新或建立 IDW 溫度圖層
+  if (STATE.showTempOverlay) {
+    if (!STATE.idwLayer) {
+      STATE.idwLayer = L.idwLayer(idwPoints, {
+        opacity: 0.45,
+        maxZoom: 18,
+        cellSize: 6,
+        exp: 4.0, // 極高權重指數，讓高山等極端測站的局部影響力極強，避免被平地測站全域平均掉
+        max: 60, // 將最大值設為 60，對應平移後的最高溫 (40°C + 20)
+        range: 0.0, // 移除內插範圍限制，保證外島或偏遠海域絕對不會出現未被覆蓋的「缺口」
+        gradient: {
+          // 公式: 鍵值 = (原始溫度 + 20) / 60
+          0.16: 'hsl(240, 100%, 55%)', // -10C
+          0.33: 'hsl(220, 100%, 55%)', // 0C
+          0.50: 'hsl(180, 100%, 55%)', // 10C
+          0.58: 'hsl(140, 100%, 55%)', // 15C
+          0.73: 'hsl(90, 100%, 55%)',  // 24C (黃綠)
+          0.76: 'hsl(60, 100%, 55%)',  // 26C (正黃)
+          0.80: 'hsl(35, 100%, 55%)',  // 28C (橘)
+          0.83: 'hsl(15, 100%, 55%)',  // 30C (紅橘)
+          0.90: 'hsl(0, 100%, 55%)',   // 34C (正紅)
+          1.00: 'hsl(330, 100%, 45%)'  // 40C (紫紅)
+        }
+      });
+      STATE.idwLayer.addTo(STATE.map);
+    } else {
+      STATE.idwLayer.setLatLngs(idwPoints);
+      if (!STATE.map.hasLayer(STATE.idwLayer)) {
+        STATE.idwLayer.addTo(STATE.map);
+      }
+    }
+    
+    // 確保遮罩層始終在 IDW 漸層圖層之上
+    if (STATE.maskLayer) {
+      STATE.maskLayer.bringToFront();
+    }
+  } else {
+    if (STATE.idwLayer && STATE.map.hasLayer(STATE.idwLayer)) {
+      STATE.map.removeLayer(STATE.idwLayer);
+    }
+  }
+
+  // 動態連動顯示/隱藏左下角的溫度對照竿
+  const legend = document.getElementById('temp-color-legend');
+  if (legend) {
+    if (STATE.showTempOverlay) {
+      legend.classList.remove('hidden');
+    } else {
+      legend.classList.add('hidden');
+    }
+  }
 }
 
 // ==========================================================================
@@ -199,12 +323,31 @@ function fallbackToSimulation(msg) {
   STATE.mode = 'simulation';
   const badge = document.getElementById('mode-badge');
   const badgeText = badge.querySelector('.badge-text');
-  badge.className = 'badge badge-sim';
-  badgeText.textContent = '模擬展示模式';
-  document.getElementById('temp-slider').disabled = false;
-  document.querySelectorAll('.weather-btn:not(.history-toggle-btn)').forEach(b => b.disabled = false);
-  document.getElementById('history-mode-toggle').classList.add('hidden');
-  updateSliderDisplay(STATE.simTemp);
+  if (badge) badge.className = 'badge badge-sim';
+  if (badgeText) badgeText.textContent = '模擬展示模式';
+  
+  const slider = document.getElementById('temp-slider');
+  if (slider) {
+    slider.disabled = false;
+    slider.value = 0;
+  }
+  
+  document.querySelectorAll('.weather-btn:not(.history-toggle-btn)').forEach(b => {
+    b.disabled = false;
+    if (b.dataset.weather === 'sunny') {
+      b.classList.add('active');
+    } else {
+      b.classList.remove('active');
+    }
+  });
+  
+  const historyToggle = document.getElementById('history-mode-toggle');
+  if (historyToggle) historyToggle.classList.add('hidden');
+  
+  STATE.tempAdj = 0;
+  STATE.simWeather = 'sunny';
+  updateSliderDisplay(STATE.tempAdj);
+  
   if (msg) showToast(msg, 'warning');
 }
 
@@ -245,12 +388,11 @@ async function fetchLiveWeatherData(apiKey) {
     });
 
     if (matchedCount > 0) {
-      // 如果處於即時模式，將「模擬氣溫」拉桿值移至當前選中景點的即時氣溫
+      // 如果處於即時模式，計算當前選中景點的即時溫度調整偏差
       const activeSpot = STATE.spots.find(s => s.id === STATE.selectedSpotId);
       if (activeSpot && activeSpot.liveTemp !== undefined) {
-        STATE.simTemp = activeSpot.liveTemp;
-        document.getElementById('temp-slider').value = STATE.simTemp.toFixed(1);
-        document.getElementById('temp-val-display').textContent = STATE.simTemp.toFixed(1);
+        const localBase = 25 + getSpotOffset(activeSpot);
+        STATE.tempAdj = activeSpot.liveTemp - localBase;
       }
       return true;
     }
@@ -274,22 +416,88 @@ function updateDashboard() {
   // 更新當前人流量顯示卡
   let currentTemp, flow;
   
-  if (STATE.mode === 'history' && STATE.historyViewMode === 'real') {
+  if (STATE.mode === 'history') {
     const hist = spot.historyData || [];
     const sumTemp = hist.reduce((sum, d) => sum + d.temp, 0);
-    const sumFlow = hist.reduce((sum, d) => sum + d.flow, 0);
-    currentTemp = sumTemp / hist.length;
-    flow = Math.round(sumFlow / hist.length);
+    const avgTemp = hist.length > 0 ? (sumTemp / hist.length) : 0;
+    
+    if (STATE.historyViewMode === 'real') {
+      const sumFlow = hist.reduce((sum, d) => sum + d.flow, 0);
+      currentTemp = avgTemp;
+      flow = hist.length > 0 ? Math.round(sumFlow / hist.length) : 0;
+    } else {
+      // 'model' 模式：基準為當地月均溫 + 滑桿相對調整溫
+      currentTemp = avgTemp + STATE.tempAdj;
+      flow = spot.simulate(currentTemp, STATE.simWeather);
+    }
   } else {
-    currentTemp = STATE.mode === 'live' && spot.liveTemp !== undefined ? spot.liveTemp : STATE.simTemp;
+    const simTemp = getSpotSimulatedTemp(spot, STATE.tempAdj);
+    currentTemp = STATE.mode === 'live' && spot.liveTemp !== undefined ? spot.liveTemp : simTemp;
     flow = STATE.mode === 'live' && spot.liveFlow !== undefined 
       ? spot.liveFlow 
-      : spot.simulate(STATE.simTemp, STATE.simWeather);
+      : spot.simulate(simTemp, STATE.simWeather);
+  }
+
+  // 更新左側控制面板滑桿顯示與文字，使其與當前選中地區氣溫同步，避免不同縣市顯示同一溫度
+  const slider = document.getElementById('temp-slider');
+  const sliderLabel = document.querySelector('.slider-header span');
+  
+  if (STATE.mode === 'history') {
+    if (STATE.historyViewMode === 'real') {
+      if (slider) slider.value = 0; // 歷史唯讀，滑桿歸 0
+      document.getElementById('temp-val-display').textContent = `${currentTemp.toFixed(1)}°C (無調整)`;
+      if (sliderLabel) {
+        sliderLabel.innerHTML = `歷史平均氣溫 (<span id="temp-val-display">${currentTemp.toFixed(1)}°C</span>)`;
+      }
+    } else {
+      // 歷史模型模式：支援相對滑桿氣溫調整，基準為該月當地均溫
+      if (slider) slider.value = STATE.tempAdj;
+      updateSliderDisplay(STATE.tempAdj);
+      if (sliderLabel) {
+        const sign = STATE.tempAdj >= 0 ? '+' : '';
+        sliderLabel.innerHTML = `模擬氣溫調整 (<span id="temp-val-display">${sign}${STATE.tempAdj.toFixed(1)}°C</span>)`;
+      }
+    }
+  } else if (STATE.mode === 'live') {
+    if (slider) slider.value = 0; // 即時 API 唯讀，滑桿歸 0
+    document.getElementById('temp-val-display').textContent = `${currentTemp.toFixed(1)}°C`;
+    if (sliderLabel) {
+      sliderLabel.innerHTML = `測站實測氣溫 (<span id="temp-val-display">${currentTemp.toFixed(1)}°C</span>)`;
+    }
+  } else {
+    // 模擬模式
+    if (slider) slider.value = STATE.tempAdj;
+    updateSliderDisplay(STATE.tempAdj);
+    if (sliderLabel) {
+      const sign = STATE.tempAdj >= 0 ? '+' : '';
+      sliderLabel.innerHTML = `模擬氣溫調整 (<span id="temp-val-display">${sign}${STATE.tempAdj.toFixed(1)}°C</span>)`;
+    }
+  }
+
+  const descSpan = document.getElementById('temp-desc');
+  if (descSpan) {
+    updateSliderCategory(currentTemp, descSpan);
+  }
+
+  // 雙軸圖已改為 120 天日資料，因此切換器一律隱藏
+  const dataTypeToggle = document.getElementById('chart-datatype-toggle');
+  if (dataTypeToggle) {
+    dataTypeToggle.classList.add('hidden');
+  }
+
+  // 動態更新折線圖標題
+  const lineChartTitle = document.getElementById('line-chart-title');
+  if (lineChartTitle) {
+    if (STATE.mode === 'history') {
+      lineChartTitle.innerHTML = `<i class="fa-solid fa-chart-area"></i> 時間維度變化特徵 (選擇月份每日趨勢)`;
+    } else {
+      lineChartTitle.innerHTML = `<i class="fa-solid fa-chart-area"></i> 時間維度變化特徵 (四個月每日歷史與模擬)`;
+    }
   }
     
   const cardTitle = document.querySelector('#stat-simulated h3');
   const cardTrend = document.querySelector('#stat-simulated .stat-trend');
-  const isDailyFlow = spot.id.startsWith('tra-') || ['ximending', 'taipei101', 'shilin', 'tamsui'].includes(spot.id);
+  const isDailyFlow = spot.id !== 'yangmingshan';
 
   if (STATE.mode === 'history') {
     if (cardTitle) cardTitle.textContent = STATE.historyViewMode === 'real' ? '真實歷史平均人流量' : '模型推算人流量';
@@ -306,29 +514,69 @@ function updateDashboard() {
 
   // C. 進行統計學相關性分析
   // 決定使用小時資料(hourly)、月份資料(monthly)或歷史資料(historyData)作為分析集
-  const dataset = STATE.mode === 'history' ? (spot.historyData || []) : (STATE.activeDataType === 'hourly' ? spot.hourly : spot.monthly);
+  let dataset;
+  if (STATE.mode === 'history') {
+    const hist = spot.historyData || [];
+    if (STATE.historyViewMode === 'real') {
+      dataset = hist.map(d => ({
+        temp: d.temp,
+        flow: d.flow,
+        timeLabel: d.timeLabel
+      }));
+    } else {
+      // 'model' 模式：應用相對氣溫調整，並重新推估每天的流量
+      dataset = hist.map(d => {
+        const adjustedTemp = d.temp + STATE.tempAdj;
+        return {
+          temp: adjustedTemp,
+          flow: spot.simulate(adjustedTemp, STATE.simWeather),
+          timeLabel: d.timeLabel
+        };
+      });
+    }
+    dataset.sort((a, b) => a.timeLabel.localeCompare(b.timeLabel));
+  } else {
+    // 模擬模式：採用四個月每日的氣溫與流量資料 (120天日資料)
+    dataset = (spot.allHistoryData || []).map(d => {
+      const adjustedTemp = d.temp + STATE.tempAdj;
+      // 計算模擬的比例變化：基於當日實際氣溫與模擬氣溫的預估流量比例
+      const baseEstimate = spot.simulate(d.temp, 'sunny');
+      const adjustedEstimate = spot.simulate(adjustedTemp, STATE.simWeather);
+      const ratio = baseEstimate > 0 ? (adjustedEstimate / baseEstimate) : 1;
+      return {
+        temp: adjustedTemp,
+        flow: Math.max(0, Math.round(d.flow * ratio)),
+        timeLabel: d.timeLabel
+      };
+    });
+    dataset.sort((a, b) => a.timeLabel.localeCompare(b.timeLabel));
+  }
   const temperatures = dataset.map(d => d.temp);
   const flows = dataset.map(d => d.flow);
 
   // 計算相關性與迴歸
   const stats = calculateRegression(temperatures, flows);
+  const rVal = stats.r !== undefined ? stats.r : 0;
+  const r2Val = stats.r2 !== undefined ? stats.r2 : 0;
+  const slopeVal = stats.slope !== undefined ? stats.slope : 0;
+  const interceptVal = stats.intercept !== undefined ? stats.intercept : 0;
 
   // 更新分析儀表板
-  document.getElementById('val-corr').textContent = stats.r.toFixed(3);
-  document.getElementById('val-r2').textContent = stats.r2.toFixed(3);
+  document.getElementById('val-corr').textContent = rVal.toFixed(3);
+  document.getElementById('val-r2').textContent = r2Val.toFixed(3);
   
   // 迴歸方程式字串格式化 (y = ax + b)
-  const equation = `y = ${stats.slope.toFixed(2)}x ${stats.intercept >= 0 ? '+' : '-'} ${Math.abs(stats.intercept).toFixed(1)}`;
+  const equation = `y = ${slopeVal.toFixed(2)}x ${interceptVal >= 0 ? '+' : '-'} ${Math.abs(interceptVal).toFixed(1)}`;
   document.getElementById('val-reg').textContent = equation;
 
   // 皮爾森相關係數狀態說明
   const corrDesc = document.getElementById('desc-corr');
-  const absR = Math.abs(stats.r);
+  const absR = Math.abs(rVal);
   if (absR >= 0.7) {
-    corrDesc.textContent = stats.r > 0 ? '強烈正相關' : '強烈負相關';
-    corrDesc.style.color = stats.r > 0 ? 'var(--color-success)' : 'var(--color-danger)';
+    corrDesc.textContent = rVal > 0 ? '強烈正相關' : '強烈負相關';
+    corrDesc.style.color = rVal > 0 ? 'var(--color-success)' : 'var(--color-danger)';
   } else if (absR >= 0.4) {
-    corrDesc.textContent = stats.r > 0 ? '中度正相關' : '中度負相關';
+    corrDesc.textContent = rVal > 0 ? '中度正相關' : '中度負相關';
     corrDesc.style.color = 'var(--color-warning)';
   } else {
     corrDesc.textContent = '弱相關/無相關';
@@ -340,9 +588,9 @@ function updateDashboard() {
     <p style="margin-bottom: 8px;"><strong>${spot.name} (${spot.typeName})</strong>：${spot.description}</p>
     <p style="margin-top: 8px;">📊 <strong>統計分析結果：</strong></p>
     <ul style="padding-left: 20px; margin: 8px 0; font-size: 0.85rem; color: var(--text-muted);">
-      <li>分析數據週期：${STATE.mode === 'history' ? '歷史月份每日氣溫與實際捷運運量 (日資料)' : (STATE.activeDataType === 'hourly' ? '今日逐時氣溫與預估人流 (24H)' : '歷史月份平均氣溫與統計人流 (12個月)')}</li>
-      <li>相關性強度：${getCorrelationText(stats.r, spot.typeName, spot.name)}</li>
-      <li>決定係數 ($R^2$ = ${stats.r2.toFixed(3)})：代表氣溫變化可以解釋大約 **${(stats.r2 * 100).toFixed(1)}%** 的人流量起伏。</li>
+      <li>分析數據週期：${STATE.mode === 'history' ? '歷史月份每日氣溫與實際日運量' : '四個月 (1～4月) 每日氣溫與人流量'}</li>
+      <li>相關性強度：${getCorrelationText(rVal, spot.typeName, spot.name)}</li>
+      <li>決定係數 ($R^2$ = ${r2Val.toFixed(3)})：代表氣溫變化可以解釋大約 **${(r2Val * 100).toFixed(1)}%** 的人流量起伏。</li>
     </ul>
     <p style="margin-top: 8px; font-size: 0.85rem;"><i class="fa-solid fa-lightbulb" style="color: var(--color-warning);"></i> <strong>決策建議：</strong> 
     ${spot.type === 'indoor' 
@@ -363,23 +611,30 @@ function renderScatterChart(xData, yData, stats, spotName) {
   if (STATE.charts.scatter) {
     STATE.charts.scatter.destroy();
   }
-
+ 
   // 整理散佈圖點資料
   const scatterPoints = xData.map((x, i) => ({ x: x, y: yData[i] }));
-
+ 
   // 計算迴歸線兩端的點 (以 x 的極小值和極大值繪製線條)
-  const minX = Math.min(...xData) - 1;
-  const maxX = Math.max(...xData) + 1;
-  const linePoints = [
-    { x: minX, y: stats.slope * minX + stats.intercept },
-    { x: maxX, y: stats.slope * maxX + stats.intercept }
-  ];
-
+  let linePoints = [];
+  if (xData.length > 0) {
+    const minX = Math.min(...xData) - 1;
+    const maxX = Math.max(...xData) + 1;
+    linePoints = [
+      { x: minX, y: stats.slope * minX + stats.intercept },
+      { x: maxX, y: stats.slope * maxX + stats.intercept }
+    ];
+  }
+ 
   // 計算當前模擬預測點
   const currentSpot = STATE.spots.find(s => s.id === STATE.selectedSpotId);
-  const simFlow = currentSpot ? currentSpot.simulate(STATE.simTemp, STATE.simWeather) : 0;
-  const simPoint = (STATE.mode === 'history' && STATE.historyViewMode === 'real') ? [] : [{ x: STATE.simTemp, y: simFlow }];
-
+  const simTemp = getSpotSimulatedTemp(currentSpot, STATE.tempAdj);
+  const simFlow = currentSpot ? currentSpot.simulate(simTemp, STATE.simWeather) : 0;
+  const simPoint = (STATE.mode === 'history' && STATE.historyViewMode === 'real') ? [] : [{ x: simTemp, y: simFlow }];
+ 
+  const showScatterPoints = STATE.mode === 'history' || STATE.mode === 'simulation';
+  const isDailyFlow = currentSpot && currentSpot.id !== 'yangmingshan';
+ 
   STATE.charts.scatter = new Chart(ctx, {
     type: 'scatter',
     data: {
@@ -390,8 +645,8 @@ function renderScatterChart(xData, yData, stats, spotName) {
           backgroundColor: STATE.selectedSpotId === 'taipei101' ? '#f472b6' : '#34d399',
           borderColor: 'rgba(255, 255, 255, 0.2)',
           borderWidth: 1,
-          pointRadius: 6,
-          pointHoverRadius: 8,
+          pointRadius: showScatterPoints ? 6 : 0,
+          pointHoverRadius: showScatterPoints ? 8 : 0,
           zIndex: 2
         },
         {
@@ -399,7 +654,7 @@ function renderScatterChart(xData, yData, stats, spotName) {
           data: linePoints,
           type: 'line',
           borderColor: 'rgba(99, 102, 241, 0.85)',
-          borderWidth: 2,
+          borderWidth: showScatterPoints ? 2 : 0,
           borderDash: [5, 5],
           fill: false,
           pointRadius: 0,
@@ -423,7 +678,26 @@ function renderScatterChart(xData, yData, stats, spotName) {
       maintainAspectRatio: false,
       plugins: {
         legend: {
-          labels: { color: '#f3f4f6', font: { family: 'Outfit, Noto Sans TC' } }
+          labels: {
+            color: '#f3f4f6',
+            font: { family: 'Outfit, Noto Sans TC' },
+            filter: function(item, chartData) {
+              // 在非歷史/非模擬模式下，隱藏實際/歷史觀測點與趨勢線的圖例
+              if (!showScatterPoints) {
+                return item.text.includes('當前模擬預測點');
+              }
+              return true;
+            }
+          }
+        },
+        tooltip: {
+          filter: function(tooltipItem) {
+            // 在非歷史/非模擬模式下，只顯示當前模擬預測點的 tooltip 資訊
+            if (!showScatterPoints) {
+              return tooltipItem.datasetIndex === 2;
+            }
+            return true;
+          }
         }
       },
       scales: {
@@ -433,7 +707,7 @@ function renderScatterChart(xData, yData, stats, spotName) {
           ticks: { color: '#9ca3af' }
         },
         y: {
-          title: { display: true, text: '人流量 (人次/小時)', color: '#9ca3af' },
+          title: { display: true, text: isDailyFlow ? '人流量 (日出站人次)' : '人流量 (人次/小時)', color: '#9ca3af' },
           grid: { color: 'rgba(255, 255, 255, 0.05)' },
           ticks: { color: '#9ca3af' }
         }
@@ -450,16 +724,8 @@ function renderLineChart(dataset, spotName) {
     STATE.charts.line.destroy();
   }
 
-  // 取得 X 軸標籤與雙軸 Y 資料
-  let labels;
-  if (STATE.mode === 'history') {
-    labels = dataset.map(d => d.timeLabel);
-  } else {
-    labels = STATE.activeDataType === 'hourly' 
-      ? dataset.map(d => `${d.hour}點`) 
-      : dataset.map(d => `${d.month}月`);
-  }
-    
+  // 取得 X 軸標籤與雙軸 Y 資料 (在兩種模式下皆為日資料，以 timeLabel 作為 X 軸標籤)
+  const labels = dataset.map(d => d.timeLabel);
   const tempFlow = dataset.map(d => d.flow);
   const tempWeatherData = dataset.map(d => d.temp);
 
@@ -469,7 +735,7 @@ function renderLineChart(dataset, spotName) {
       labels: labels,
       datasets: [
         {
-          label: STATE.mode === 'history' ? '捷運出站運量' : '人流量',
+          label: STATE.mode === 'history' ? '日出站人流量' : '模擬日人流量',
           data: tempFlow,
           borderColor: '#06b6d4',
           backgroundColor: 'rgba(6, 182, 212, 0.1)',
@@ -478,7 +744,7 @@ function renderLineChart(dataset, spotName) {
           yAxisID: 'y'
         },
         {
-          label: '氣溫 (°C)',
+          label: STATE.mode === 'history' ? '日均溫 (°C)' : '模擬日均溫 (°C)',
           data: tempWeatherData,
           borderColor: '#f59e0b',
           backgroundColor: 'transparent',
@@ -529,6 +795,7 @@ function renderSpotsList() {
 
   listContainer.innerHTML = '';
   STATE.spots.forEach(spot => {
+    if (spot.isHidden) return;
     // 取得當前人流
     let flow;
     if (STATE.mode === 'history') {
@@ -540,9 +807,10 @@ function renderSpotsList() {
         return; // 歷史模式下，隱藏無資料站點 (如陽明山)
       }
     } else {
+      const simTemp = getSpotSimulatedTemp(spot, STATE.tempAdj);
       flow = STATE.mode === 'live' && spot.liveFlow !== undefined 
         ? spot.liveFlow 
-        : spot.simulate(STATE.simTemp, STATE.simWeather);
+        : spot.simulate(simTemp, STATE.simWeather);
     }
 
     const isActive = spot.id === STATE.selectedSpotId;
@@ -599,11 +867,20 @@ function setupEventListeners() {
   const slider = document.getElementById('temp-slider');
   slider.addEventListener('input', (e) => {
     const val = parseFloat(e.target.value);
-    STATE.simTemp = val;
+    STATE.tempAdj = val;
     updateSliderDisplay(val);
     updateMapMarkers();
     updateDashboard();
   });
+
+  // A-2. 區域氣溫著色勾選連動
+  const chkTempOverlay = document.getElementById('chk-temp-overlay');
+  if (chkTempOverlay) {
+    chkTempOverlay.addEventListener('change', (e) => {
+      STATE.showTempOverlay = e.target.checked;
+      updateMapMarkers();
+    });
+  }
 
   // B. 天氣按鈕連動 (過濾掉 toggle 按鈕)
   document.querySelectorAll('.weather-btn:not(.history-toggle-btn)').forEach(btn => {
@@ -753,6 +1030,21 @@ function setupEventListeners() {
       loadRealMrtData(parseInt(year), parseInt(month));
     });
   }
+
+  // F. 圖表資料類型切換 (逐時 / 月度)
+  const chartTypeToggle = document.getElementById('chart-datatype-toggle');
+  if (chartTypeToggle) {
+    chartTypeToggle.querySelectorAll('button').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        chartTypeToggle.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+        const targetBtn = e.currentTarget;
+        targetBtn.classList.add('active');
+        
+        STATE.activeDataType = targetBtn.dataset.type;
+        updateDashboard();
+      });
+    });
+  }
 }
 
 // ==========================================================================
@@ -856,11 +1148,15 @@ function parseAndApplyCSV(text) {
     const newSpots = Object.values(parsedSpots);
     if (newSpots.length === 0) throw new Error('無有效數據列！');
 
-    // 清除地圖舊的自訂 Marker
+    // 清除地圖舊的自訂 Marker 與著色圈
     Object.keys(STATE.mapMarkers).forEach(key => {
       STATE.map.removeLayer(STATE.mapMarkers[key]);
     });
     STATE.mapMarkers = {};
+    if (STATE.idwLayer && STATE.map.hasLayer(STATE.idwLayer)) {
+      STATE.map.removeLayer(STATE.idwLayer);
+    }
+    STATE.idwLayer = null;
 
     // 套用新景點資料
     STATE.spots = newSpots;
@@ -912,10 +1208,30 @@ function downloadSampleCSV() {
 // ==========================================================================
 // 8. 輔助函數 (Helper Functions)
 // ==========================================================================
-function updateSliderDisplay(val) {
-  document.getElementById('temp-val-display').textContent = val.toFixed(1);
-  const descSpan = document.getElementById('temp-desc');
+// 取得各個觀測站點相對於台北主測站 (taipei101) 的氣溫偏差值
+function getSpotOffset(spot) {
+  if (!spot) return 0;
+  const taipeiSpot = STATE.spots.find(s => s.id === 'taipei101');
+  if (!taipeiSpot || !taipeiSpot.monthly || !spot.monthly) return 0;
   
+  const taipeiAvg = taipeiSpot.monthly.reduce((sum, m) => sum + m.temp, 0) / taipeiSpot.monthly.length;
+  const spotAvg = spot.monthly.reduce((sum, m) => sum + m.temp, 0) / spot.monthly.length;
+  
+  return spotAvg - taipeiAvg;
+}
+
+// 依邊界基底氣溫與偏差值，推估點選地區的模擬氣溫
+function getSpotSimulatedTemp(spot, tempAdj) {
+  const baseTemp = 25; // 台北核心舒適基準溫
+  return baseTemp + getSpotOffset(spot) + tempAdj;
+}
+
+function updateSliderDisplay(val) {
+  const sign = val >= 0 ? '+' : '';
+  document.getElementById('temp-val-display').textContent = `${sign}${val.toFixed(1)}°C`;
+}
+
+function updateSliderCategory(val, descSpan) {
   if (val < 15) {
     descSpan.textContent = '寒冷';
     descSpan.style.backgroundColor = 'rgba(59, 130, 246, 0.2)';
@@ -934,6 +1250,7 @@ function updateSliderDisplay(val) {
     descSpan.style.color = '#f87171';
   }
 }
+
 
 // Toast 吐司提示訊息
 function showToast(message, type = 'info') {
@@ -1009,7 +1326,7 @@ async function loadHistoricalMonths() {
   if (!select) return;
 
   try {
-    const response = await fetch('./data/months.json');
+    const response = await fetch('./data/months.json?v=5.1');
     if (!response.ok) throw new Error('無法取得月份清單');
     const months = await response.json();
 
@@ -1038,7 +1355,7 @@ async function initBaseSimulation() {
   if (!select) return;
 
   try {
-    const response = await fetch('./data/months.json');
+    const response = await fetch('./data/months.json?v=5.1');
     if (!response.ok) throw new Error('無法取得月份清單');
     const months = await response.json();
     
@@ -1048,7 +1365,7 @@ async function initBaseSimulation() {
     // 依序抓取所有可用月份的 JSON
     for (const m of months) {
       const monthStr = m.month.toString().padStart(2, '0');
-      const url = `./data/mrt_${m.year}_${monthStr}.json`;
+      const url = `./data/mrt_${m.year}_${monthStr}.json?v=5.1`;
       try {
         const res = await fetch(url);
         if (res.ok) {
@@ -1091,34 +1408,38 @@ async function initBaseSimulation() {
         };
 
         // 2. 重新對齊預設的 hourly 數據集 (將估算日流量除以 24 作為逐時平均值呈現)
-        spot.hourly = spot.hourly.map(h => ({
-          hour: h.hour,
-          temp: h.temp,
-          flow: Math.round(spot.simulate(h.temp, 'sunny') / 24)
-        }));
+        if (spot.hourly) {
+          spot.hourly = spot.hourly.map(h => ({
+            hour: h.hour,
+            temp: h.temp,
+            flow: Math.round(spot.simulate(h.temp, 'sunny') / 24)
+          }));
+        }
 
         // 3. 重新對齊預設的 monthly 數據集 (直接使用日運量)
-        spot.monthly = spot.monthly.map(m => {
-          // 如果該月份有真實資料，直接使用真實資料的平均日運量
-          const monthStr = m.month.toString().padStart(2, '0');
-          const monthData = spot.allHistoryData.filter(h => h.timeLabel.startsWith(monthStr + '/'));
-          if (monthData.length > 0) {
-            const avgFlow = monthData.reduce((sum, d) => sum + d.flow, 0) / monthData.length;
-            const avgTemp = monthData.reduce((sum, d) => sum + d.temp, 0) / monthData.length;
-            return {
-              month: m.month,
-              temp: Math.round(avgTemp * 10) / 10,
-              flow: Math.round(avgFlow)
-            };
-          } else {
-            // 沒有真實資料的月份，採用迴歸預測日運量
-            return {
-              month: m.month,
-              temp: m.temp,
-              flow: spot.simulate(m.temp, 'sunny')
-            };
-          }
-        });
+        if (spot.monthly) {
+          spot.monthly = spot.monthly.map(m => {
+            // 如果該月份有真實資料，直接使用真實資料的平均日運量
+            const monthStr = m.month.toString().padStart(2, '0');
+            const monthData = spot.allHistoryData.filter(h => h.timeLabel.startsWith(monthStr + '/'));
+            if (monthData.length > 0) {
+              const avgFlow = monthData.reduce((sum, d) => sum + d.flow, 0) / monthData.length;
+              const avgTemp = monthData.reduce((sum, d) => sum + d.temp, 0) / monthData.length;
+              return {
+                month: m.month,
+                temp: Math.round(avgTemp * 10) / 10,
+                flow: Math.round(avgFlow)
+              };
+            } else {
+              // 沒有真實資料的月份，採用迴歸預測日運量
+              return {
+                month: m.month,
+                temp: m.temp,
+                flow: spot.simulate(m.temp, 'sunny')
+              };
+            }
+          });
+        }
       }
     });
 
@@ -1155,7 +1476,7 @@ async function loadRealMrtData(year, month) {
 
   try {
     const monthStr = month.toString().padStart(2, '0');
-    const url = `./data/mrt_${year}_${monthStr}.json`;
+    const url = `./data/mrt_${year}_${monthStr}.json?v=5.1`;
     
     console.log(`Fetching static data from: ${url}`);
     const response = await fetch(url);
@@ -1172,6 +1493,7 @@ async function loadRealMrtData(year, month) {
     // 初始化或複製一份景點資料，以便能填入歷史數據
     STATE.spots = SPOTS_DATA.map(spot => ({ ...spot }));
     STATE.spots.forEach(s => s.historyData = []);
+    STATE.historyMonth = month;
 
     data.forEach(item => {
       const spotId = mapStationNameToId(item.spot_name);
@@ -1214,33 +1536,26 @@ async function loadRealMrtData(year, month) {
 
     // 更新狀態
     STATE.mode = 'history';
-    STATE.historyViewMode = 'model';
+    STATE.historyViewMode = 'real';
     
-    // 顯示檢視模式切換器並預設選中「模型推算」
+    // 顯示檢視模式切換器並預設選中「真實歷史平均」
     const togglePanel = document.getElementById('history-mode-toggle');
     if (togglePanel) togglePanel.classList.remove('hidden');
     document.querySelectorAll('.history-toggle-btn').forEach(btn => {
-      btn.classList.toggle('active', btn.dataset.view === 'model');
+      btn.classList.toggle('active', btn.dataset.view === 'real');
     });
     
     const badge = document.getElementById('mode-badge');
     const badgeText = badge.querySelector('.badge-text');
     badge.className = 'badge badge-live';
-    badgeText.textContent = `真實模型預測 (${year}/${month.toString().padStart(2, '0')})`;
+    badgeText.textContent = `真實歷史平均 (${year}/${monthStr})`;
     
-    // 解除模擬器鎖定
-    document.getElementById('temp-slider').disabled = false;
-    document.querySelectorAll('.weather-btn:not(.history-toggle-btn)').forEach(b => b.disabled = false);
+    // 鎖定模擬器 (因為此時為真實歷史平均，不能模擬)
+    document.getElementById('temp-slider').disabled = true;
+    document.querySelectorAll('.weather-btn:not(.history-toggle-btn)').forEach(b => b.disabled = true);
     
-    // 將拉桿更新至真實歷史資料的平均溫度作為初始值
-    const validSpots = STATE.spots.filter(s => s.historyData && s.historyData.length > 0);
-    if (validSpots.length > 0) {
-      const allHistTemp = validSpots.map(s => s.historyData.map(h => h.temp)).flat();
-      const avgHistTemp = allHistTemp.reduce((a, b) => a + b, 0) / allHistTemp.length;
-      STATE.simTemp = Math.round(avgHistTemp * 10) / 10;
-      document.getElementById('temp-slider').value = STATE.simTemp;
-      updateSliderDisplay(STATE.simTemp);
-    }
+    // 將拉桿調整值重設為 0
+    STATE.tempAdj = 0;
 
     // 顯示「回復預設」按鈕以利重置
     const btnResetUpload = document.getElementById('btn-reset-upload');
@@ -1273,28 +1588,60 @@ async function loadRealMrtData(year, month) {
 
 // 站點名稱到 ID 映射
 function mapStationNameToId(name) {
+  // 1. 特殊規則或精確名稱映射 (台鐵簡稱對應到主要車站 ID)
+  const traMapping = {
+    '基隆': 'tra-keelung',
+    '基隆車站': 'tra-keelung',
+    '桃園': 'tra-taoyuan',
+    '桃園車站': 'tra-taoyuan',
+    '新竹': 'tra-hsinchu',
+    '新竹車站': 'tra-hsinchu',
+    '台中': 'tra-taichung',
+    '臺中': 'tra-taichung',
+    '台中車站': 'tra-taichung',
+    '臺中車站': 'tra-taichung',
+    '彰化': 'tra-changhua',
+    '彰化車站': 'tra-changhua',
+    '嘉義': 'tra-chiayi',
+    '嘉義車站': 'tra-chiayi',
+    '台南': 'tra-tainan',
+    '臺南': 'tra-tainan',
+    '台南車站': 'tra-tainan',
+    '臺南車站': 'tra-tainan',
+    '高雄': 'tra-kaohsiung',
+    '高雄車站': 'tra-kaohsiung',
+    '屏東': 'tra-pingtung',
+    '屏東車站': 'tra-pingtung',
+    '宜蘭': 'tra-yilan',
+    '宜蘭車站': 'tra-yilan',
+    '花蓮': 'tra-hualien',
+    '花蓮車站': 'tra-hualien',
+    '台東': 'tra-taitung',
+    '臺東': 'tra-taitung',
+    '台東車站': 'tra-taitung',
+    '臺東車站': 'tra-taitung',
+    '苗栗': 'tra-miaoli',
+    '苗栗車站': 'tra-miaoli',
+    '斗六': 'tra-douliu',
+    '斗六車站': 'tra-douliu'
+  };
+
+  if (traMapping[name]) return traMapping[name];
+
   if (name.includes('西門')) return 'ximending';
   if (name.includes('101')) return 'taipei101';
   if (name.includes('士林')) return 'shilin';
   if (name.includes('淡水')) return 'tamsui';
-  
-  // 台鐵車站映射
-  const traMapping = {
-    '基隆車站': 'tra-keelung',
-    '桃園車站': 'tra-taoyuan',
-    '新竹車站': 'tra-hsinchu',
-    '台中車站': 'tra-taichung',
-    '彰化車站': 'tra-changhua',
-    '嘉義車站': 'tra-chiayi',
-    '台南車站': 'tra-tainan',
-    '高雄車站': 'tra-kaohsiung',
-    '屏東車站': 'tra-pingtung',
-    '宜蘭車站': 'tra-yilan',
-    '花蓮車站': 'tra-hualien',
-    '台東車站': 'tra-taitung'
-  };
-  
-  if (traMapping[name]) return traMapping[name];
-  
+  if (name.includes('動物園')) return 'zoo';
+  if (name.includes('中山')) return 'zhongshan';
+  if (name.includes('公館')) return 'gongguan';
+  if (name.includes('板橋')) return 'banqiao';
+  if (name.includes('新店')) return 'xindian';
+  if (name.includes('北投')) return 'xinbeitou';
+
+  // 2. 如果都不是簡稱，再精確比對測站 (包含隱藏的氣象觀測點，使其能載入歷史溫度數據)
+  const exactSpot = STATE.spots.find(s => s.name === name);
+  if (exactSpot) return exactSpot.id;
+
   return null;
 }

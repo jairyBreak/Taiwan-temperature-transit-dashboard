@@ -1098,3 +1098,59 @@ body {
   line-height: 1.5;
   white-space: pre-line;
 }
+
+/* ==========================================================================
+   溫度顏色對照竿 (Temperature Color Scale Legend)
+   ========================================================================== */
+.map-temp-legend {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  z-index: 10;
+  background: rgba(10, 11, 16, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border-light);
+  padding: 10px 14px;
+  border-radius: 12px;
+  width: 180px;
+  pointer-events: auto;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.temp-legend-title {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+}
+
+.temp-gradient-bar {
+  height: 8px;
+  border-radius: 4px;
+  background: linear-gradient(
+    to right,
+    hsl(240, 100%, 55%),  /* -10C */
+    hsl(220, 100%, 55%),  /* 0C */
+    hsl(180, 100%, 55%),  /* 10C */
+    hsl(140, 100%, 55%),  /* 15C */
+    hsl(90, 100%, 55%),   /* 24C */
+    hsl(60, 100%, 55%),   /* 26C */
+    hsl(35, 100%, 55%),   /* 28C */
+    hsl(15, 100%, 55%),   /* 30C */
+    hsl(0, 100%, 55%),    /* 34C */
+    hsl(330, 100%, 45%)   /* 40C */
+  );
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.temp-legend-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.68rem;
+  color: var(--text-main);
+  font-weight: 600;
+}
