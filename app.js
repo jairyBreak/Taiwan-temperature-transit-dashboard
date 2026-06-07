@@ -592,10 +592,10 @@ function updateDashboard() {
       <li>相關性強度：${getCorrelationText(rVal, spot.typeName, spot.name)}</li>
       <li>決定係數 ($R^2$ = ${r2Val.toFixed(3)})：代表氣溫變化可以解釋大約 **${(r2Val * 100).toFixed(1)}%** 的人流量起伏。</li>
     </ul>
-    <p style="margin-top: 8px; font-size: 0.85rem;"><i class="fa-solid fa-lightbulb" style="color: var(--color-warning);"></i> <strong>決策建議：</strong> 
+    <p style="margin-top: 8px; font-size: 0.85rem;"><i class="fa-solid fa-chart-line" style="color: var(--color-primary-light);"></i> <strong>氣象關聯特徵分析：</strong> 
     ${spot.type === 'indoor' 
-      ? '在極端氣溫（盛夏或酷寒）下，此區域人流顯著飆升。建議百貨商場適度調降室內空調溫度，並在戶外入口安排引導，甚至搭配雨天/高溫折扣活動以引導流量。' 
-      : '此為典型戶外景區，高溫與降雨是人潮的最大殺手。建議景區管理處多增設遮陽棚、飲水機、以及室內休息站，或規劃低溫與下雨特製的黃昏與夜間遊程，以調節極端天氣帶來的人流衝擊。'}
+      ? '此站點在極端氣溫（如盛夏高溫或冬季寒流）下人流量通常呈現增長趨勢，顯示該區域具有顯著的室內避暑或避寒效應。在統計分析中，氣溫與人流量常呈現正向響應，反映出天候波動對大眾運輸使用者在室內商業空間群聚行為的影響。' 
+      : '此站點屬於戶外型區域，氣溫上升與降雨對其運量常有顯著的負向衝擊。統計數據顯示，當氣溫過高或天候不佳時，人流量有明顯下降趨勢，表現出較高的氣候敏感度。此特徵在交通規劃與人流調控中，是關鍵的分析評估指標。'}
     </p>
   `;
 

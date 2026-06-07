@@ -783,23 +783,23 @@ export function getCorrelationText(r, typeName, spotName) {
   let degree = "";
   let direction = r > 0 ? "正相關" : "負相關";
   
-  if (absR >= 0.7) degree = "強烈";
+  if (absR >= 0.7) degree = "高度";
   else if (absR >= 0.4) degree = "中度";
   else if (absR >= 0.2) degree = "低度";
-  else return `在 ${spotName}，氣溫與人流量之間**幾乎沒有線性相關性**（$r$ = ${r.toFixed(2)}）。人流可能主要受時間段、節假日或特定活動影響。`;
+  else return `在 ${spotName}，氣溫與人流量之間**無顯著線性相關性**（$r$ = ${r.toFixed(2)}），顯示人流量波動主要受氣溫以外的因子（如通勤週期、例假日或特定事件）主導。`;
   
   let explanation = "";
   if (r > 0) {
     if (typeName === "室內商業區") {
-      explanation = "這符合典型室內商圈的「避暑/避寒效應」，當氣溫升得越高（例如炎夏）或跌得越低，人們越傾向待在有冷氣/暖氣的室內，因此人流量隨氣溫攀升而增加。";
+      explanation = "此現象反映了室內空間之『天候適應效應』。在氣溫偏高時，民眾傾向選擇進入具備空調系統之室內環境，使得出站運量與氣溫表現出正向相關。";
     } else {
-      explanation = "顯示氣溫升高有助於活絡該地區人潮。";
+      explanation = "顯示氣溫上升與該地區人流量呈正向變動關係。";
     }
   } else {
     if (typeName.includes("戶外")) {
-      explanation = "這反映了典型的「戶外避熱/避寒特徵」。隨著氣溫飆高，烈日曝曬會降低遊客前往露天戶外景點的意願；同理，若遇到冬天的低溫，寒冷的氣候也會阻礙人們出門，進而導致人流量隨氣溫劇烈增減。";
+      explanation = "此現象反映了戶外區域之『氣候敏感性特徵』。當溫度過高時，人體舒適度下降會降低民眾前往露天景點的意願，導致運量與氣溫變化呈負向關聯。";
     } else {
-      explanation = "顯示氣溫升高反而會使人流量降低。";
+      explanation = "顯示氣溫上升與該地區人流量呈負向變動關係。";
     }
   }
   
