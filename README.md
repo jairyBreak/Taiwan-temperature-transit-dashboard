@@ -116,14 +116,13 @@ Taiwan-temperature-transit-dashboard/
 ├── README.md           # 專案說明文件
 ├── temperature_influence_analysis.md # 氣溫人流分析報告
 ├── .gitignore          # Git忽略設定
-├── data/               # 靜態數據集
-│   ├── months.json      # 月份清單配置
-│   ├── mrt_2026_01.json # 1月歷史數據
-│   ├── mrt_2026_02.json # 2月歷史數據
-│   ├── mrt_2026_03.json # 3月歷史數據
-│   ├── mrt_2026_04.json # 4月歷史數據
-│   ├── taiwan.json      # 台灣邊界數據
-│   └── taiwan_mask.js   # 海岸遮罩數據
-├── backend/            # 後端預處理
-└── scratch/            # 驗證分析腳本
+└── data/               # 靜態數據集
+    ├── months.json      # 月份清單配置
+    ├── mrt_2026_01.json # 1月歷史數據
+    ├── mrt_2026_02.json # 2月歷史數據
+    ├── mrt_2026_03.json # 3月歷史數據
+    ├── mrt_2026_04.json # 4月歷史數據
+    ├── taiwan.json      # 台灣邊界數據
+    └── taiwan_mask.js   # 海岸遮罩數據
+
 ```
