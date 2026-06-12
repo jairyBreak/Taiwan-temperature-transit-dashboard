@@ -1397,11 +1397,20 @@ async function initBaseSimulation() {
         const flows = spot.allHistoryData.map(h => h.flow);
         const stats = calculateRegression(temps, flows);
         
-        // 1. 覆寫預設模擬函數 (直套日流量線性迴歸)
         spot.simulate = (t, w) => {
-          const est = stats.slope * t + stats.intercept;
+          let est;
+          if (spot.type === 'indoor' && t > 28) {
+            // 室內站點大於 28 度時觸發「高溫避暑人流回升」
+            const est28 = stats.slope * 28 + stats.intercept;
+            est = est28 + (t - 28) * 45;
+          } else {
+            est = stats.slope * t + stats.intercept;
+          }
           let mod = 1.0;
-          if (w === 'rainy') mod = 0.8;
+          if (w === 'rainy') {
+            // 室內站點雨天不受影響甚至微幅增長，戶外站點人流減少 20%
+            mod = spot.type === 'indoor' ? 1.08 : 0.8;
+          }
           if (w === 'typhoon') mod = 0.1;
           if (w === 'cold') mod = 0.9;
           return Math.max(0, Math.round(est * mod));
